@@ -63,11 +63,11 @@ export default function MakeathonLanding() {
       <main className="relative pt-2 pb-10 px-6 flex flex-col min-h-screen z-20">
         
         {/* Title */}
-        <div className={`${ethnocentric.className} text-center mb-16 animate-[slideUp_0.8s_ease-out_0.2s_both]`}>
-            <h2 className={`relative flex flex-col items-center text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#0378AE] via-[#29bbd8] to-white bg-clip-text text-transparent text-center`}>
+        <div className={`${ethnocentric.className} text-center mb-8 sm:mb-12 md:mb-16 animate-[slideUp_0.8s_ease-out_0.2s_both]`}>
+            <h2 className={`relative flex flex-col items-center text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-linear-to-r from-[#0378AE] via-[#29bbd8] to-white bg-clip-text text-transparent text-center leading-tight`}>
             MAKEATHON
             </h2>
-          <div className={`text-4xl md:text-7xl font-bold text-white mt-2`}>
+          <div className={`text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold text-white mt-2 sm:mt-3 md:mt-4 leading-tight`}>
             2026
           </div>
         </div>
