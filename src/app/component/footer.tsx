@@ -166,7 +166,7 @@ export default function Footer() {
         }
         
         .animate-shine-professional {
-          animation: shine-professional 4s infinite ease-in-out;
+          animation: shine-professional 3s infinite ease-in-out;
         }
       `}</style>
     </footer>
