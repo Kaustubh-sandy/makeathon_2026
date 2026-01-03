@@ -25,39 +25,51 @@ export default function MakeathonLanding() {
       </div>
 
       {/* Header */}
-      <header className="relative z-20">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          {/* Left - Makeathon Logo */}
-          <div className="flex items-center gap-4">
-            <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-[#0378AE]/30">
-              <Image
-                src="/assets/logo.jpg"
-                alt="Makeathon Logo"
-                width={48}
-                height={48}
-                className="object-cover"
-              />
-            </div>
-            <div className={`${orbitron.className}`}>
-              <span className="text-lg font-bold">SELECT MAKEATHON</span>
-              <span className="text-[#18BBDA] font-bold"> &apos;26</span>
-            </div>
-          </div>
+<header className="relative z-20">
+  {/* Added 'flex-wrap' and 'gap-y-2' so items stack if screen is too narrow */}
+  <div className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex flex-wrap justify-between items-center gap-y-3 gap-x-2">
+    
+    {/* Left - Makeathon Logo & Text */}
+    <div className="flex items-center gap-3">
+      {/* Logo Icon */}
+      <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-lg overflow-hidden border border-[#0378AE]/30">
+        <Image
+          src="/assets/logo.jpg"
+          alt="Makeathon Logo"
+          width={48}
+          height={48}
+          className="object-cover"
+        />
+      </div>
 
-          {/* Right - VIT Logo Space */}
-          <div className="flex items-center">
-            <div className="flex items-center justify-center text-white text-xs text-center">
-              <Image
-              src="/assets/vit logo.png"
-              alt="VIT Logo"
-              width={250}
-              height={250}
-              className="object-contain"
-              />
-            </div>
-          </div>
-        </div>
-      </header>
+      {/* Text Group */}
+      <div className={`${orbitron.className} flex flex-col justify-center`}>
+        {/* On mobile: text-xs. On desktop: text-lg */}
+        <span className="text-xs sm:text-sm md:text-lg font-bold text-white leading-tight">
+          SELECT MAKEATHON
+        </span>
+        <span className="text-xs sm:text-sm md:text-lg font-bold text-[#18BBDA] leading-tight">
+           &apos;26
+        </span>
+      </div>
+    </div>
+
+    {/* Right - VIT Logo Space */}
+    {/* shrink-0 prevents it from getting crushed, but w-20 makes it small enough for mobile */}
+    <div className="flex items-center shrink-0">
+      <div className="relative w-20 sm:w-28 md:w-[250px]">
+        <Image
+          src="/assets/vit logo.png"
+          alt="VIT Logo"
+          width={250}
+          height={60}
+          className="object-contain w-full h-auto"
+        />
+      </div>
+    </div>
+    
+  </div>
+</header>
 
       {/* Main Content */}
       <main className="relative pt-2 pb-10 px-6 flex flex-col min-h-screen z-20">
