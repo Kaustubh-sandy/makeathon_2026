@@ -39,8 +39,8 @@ export default function MakeathonLanding() {
               />
             </div>
             <div className={`${orbitron.className}`}>
-              <span className="text-lg font-bold">MAKEATHON</span>
-              <span className="text-[#18BBDA] font-bold">  2026</span>
+              <span className="text-lg font-bold">SELECT MAKEATHON</span>
+              <span className="text-[#18BBDA] font-bold"> &apos;26</span>
             </div>
           </div>
 
@@ -63,51 +63,103 @@ export default function MakeathonLanding() {
       <main className="relative pt-2 pb-10 px-6 flex flex-col min-h-screen z-20">
         
         {/* Title */}
-        <div className={`${ethnocentric.className} text-center mb-8 sm:mb-12 md:mb-16 animate-[slideUp_0.8s_ease-out_0.2s_both]`}>
-            <h2 className={`relative flex flex-col items-center text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold bg-linear-to-r from-[#0378AE] via-[#29bbd8] to-white bg-clip-text text-transparent text-center leading-tight`}>
-            MAKEATHON
-            </h2>
-          <div className={`text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold text-white mt-2 sm:mt-3 md:mt-4 leading-tight`}>
-            2026
-          </div>
-        </div>
-
-        {/* Professional Status Bar (Replaces "Coming Soon" Badge) */}
-<div className="flex justify-center mb-12 animate-[slideUp_0.8s_ease-out_0.4s_both]">
-  <div className="group relative overflow-hidden rounded-full p-[1.5px]">
-    {/* Subtle Gradient Border */}
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-    
-    <div className="relative flex items-center gap-4 px-8 py-3 rounded-full bg-[#00121F]/80 backdrop-blur-md border border-white/5 transition-all duration-300 group-hover:bg-[#00121F]/60">
+<div className={`${ethnocentric.className} mb-8 sm:mb-12 md:mb-16 animate-[slideUp_0.8s_ease-out_0.2s_both]`}>
+  <div className="relative max-w-6xl mx-auto px-4">
+    <div className="flex items-center justify-center gap-4 whitespace-nowrap">
+      {/* SELECT on the left */}
+      <div className={`text-lg xs:text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#0378AE] leading-tight`}>
+        SELECT
+      </div>
       
-      {/* Status Dot (Static & Clean) */}
-      <div className="relative flex h-2.5 w-2.5">
-        <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-20 animate-ping duration-1000"></span>
-        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+      {/* MAKEATHON centered */}
+      <h2 className={`text-lg xs:text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-linear-to-r from-[#087aaf] via-[#29bbd8] to-white bg-clip-text text-transparent leading-tight`}>
+        MAKEATHON
+      </h2>
+      {/* 2026 on the right */}
+      <div className={`text-lg xs:text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight`}>
+        2026
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{/* Professional Unified Registration Bar with Running Border Light */}
+<div className="mb-12 md:mb-16 flex justify-center animate-[slideUp_0.8s_ease-out_0.4s_both] px-4 md:px-0">
+  {/* Container: Changed to md:w-auto to hug content (removes the big gap) */}
+  <div className="group relative w-full md:w-auto overflow-hidden rounded-2xl md:rounded-full p-[1.5px]">
+    
+    {/* --- THE RUNNING BORDER LIGHT --- */}
+    <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#0000_0%,#0000_50%,#18BBDA_100%)]" />
+    
+    {/* --- INNER CONTENT --- */}
+    <div className="relative flex flex-col md:flex-row items-center justify-center gap-5 md:gap-8 px-5 py-5 md:px-8 md:py-3 rounded-2xl md:rounded-full bg-[#00121F] backdrop-blur-xl">
+      
+      {/* Left Section: Status & Info */}
+      <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6 w-full md:w-auto text-center md:text-left">
+        {/* Status with Dot */}
+        <div className="flex items-center justify-center gap-3">
+          <div className="relative flex h-2.5 w-2.5 shrink-0">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </div>
+          <span className={`${montserrat.className} text-gray-200 text-sm font-semibold tracking-widest uppercase whitespace-nowrap`}>
+            Registrations Open
+          </span>
+        </div>
+        
+        {/* Divider (Hidden on Mobile) */}
+        <div className="hidden md:block h-4 w-[1px] bg-white/10"></div>
+        
+        {/* Pricing Info */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-sm">
+          <span className="text-gray-400">
+            External: <span className="text-white">₹750/- per Member</span>
+          </span>
+          <span className="hidden sm:inline text-gray-600">•</span>
+          <span className="text-gray-400">
+            VIT Students: <span className="text-[#18BBDA] font-semibold">Free</span>
+          </span>
+        </div>
       </div>
 
-      <span className={`${montserrat.className} text-gray-300 text-sm font-semibold tracking-[0.18em] uppercase`}>
-        Registration Opening Soon
-      </span>
+      {/* Right Section: Action Button */}
+      {/* Adjusted padding (py-2) and text size (text-xs) for mobile to reduce size */}
+      <a
+        href="https://events.vit.ac.in/Users/index"
+        target="_blank"
+        rel="noreferrer"
+        className="flex items-center justify-center gap-2 rounded-full bg-[#18BBDA] px-6 py-2 md:py-2.5 transition-all duration-300 hover:bg-[#15a1bc] hover:shadow-[0_0_15px_-3px_#18BBDA] group/btn w-full md:w-auto"
+      >
+        <span className={`${montserrat.className} text-[#00121F] text-xs md:text-sm font-bold tracking-wide uppercase`}>
+          Register Now
+        </span>
+        <svg 
+          className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#00121F] transition-transform duration-300 group-hover/btn:translate-x-1" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+
     </div>
   </div>
 </div>
 
 {/* Description (Editorial Style) */}
-<div className="relative max-w-3xl mx-auto mb-12 px-6 animate-[fadeIn_1s_ease-out_0.6s_both]">
-  {/* Decorative Vertical Lines for Structure */}
-  {/* <div className="absolute left-0 top-2 bottom-2 w-[1px] bg-gradient-to-b from-transparent via-[#18BBDA]/30 to-transparent hidden md:block"></div>
-  <div className="absolute right-0 top-2 bottom-2 w-[1px] bg-gradient-to-b from-transparent via-[#18BBDA]/30 to-transparent hidden md:block"></div> */}
-
+<div className="relative max-w-3xl mx-auto mb-8 px-6 animate-[fadeIn_1s_ease-out_0.6s_both]">
   <p className={`${montserrat.className} text-center text-gray-300 text-lg md:text-xl leading-8 font-light tracking-wide`}>
-    <span className="text-white font-medium">Connect ideas to reality.</span> Join the premier electrical 
-    and electronics hackathon. We are opening tracks for innovators ready to 
-    architect the <span className="text-[#18BBDA] border-b border-[#18BBDA]/30 pb-0.5">future</span>.
+    <span className="text-white font-medium">SELECT Makeathon is a 36-hour innovation challenge where students, designers, and hackers build real-world solutions. 
+      Teams brainstorm, ideate, and develop prototypes across hardware and software domains.</span>
   </p>
 </div>
 
 
-        {/* --- INFO BLOCKS SECTION (Professional Data Design) --- */}
+
+
+{/* --- INFO BLOCKS SECTION (Professional Data Design) --- */}
 <div className="grid md:grid-cols-2 gap-20 max-w-5xl mx-auto mb-2">
   
   {/* Block 1: Calendar */}
@@ -129,10 +181,10 @@ export default function MakeathonLanding() {
           Timeline
         </span>
         <h3 className={`${aldrich.className} text-2xl text-white font-medium mb-1 group-hover:text-[#18BBDA] transition-colors`}>
-          March 12-14
+          26-28 March 2026
         </h3>
         <p className="text-sm text-gray-500 font-light">
-          48-Hour Innovation Sprint
+          36-Hour Innovation Sprint
         </p>
       </div>
     </div>
@@ -198,6 +250,14 @@ export default function MakeathonLanding() {
         @keyframes slideUp {
           from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+          @keyframes shine-professional {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        
+        .animate-shine-professional {
+          animation: shine-professional 3s infinite ease-in-out;
         }
       `}</style>
     </div>

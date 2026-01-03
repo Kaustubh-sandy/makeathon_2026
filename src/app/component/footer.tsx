@@ -64,7 +64,7 @@ export default function Footer() {
           {/* Column 1: Brand */}
           <div className="md:col-span-5 flex flex-col items-start">
             <div className={`${orbitron.className} text-2xl font-bold tracking-wider mb-4`}>
-              MAKEATHON<span className="text-[#18BBDA]"> 2026</span>
+              SELECT MAKEATHON<span className="text-[#18BBDA]"> &apos;26</span>
             </div>
             <p className={`${montserrat.className} text-gray-400 text-sm leading-relaxed max-w-sm mb-8`}>
               The premier electrical and electronics hackathon. Bridging the gap between conceptual innovation and industrial reality.
