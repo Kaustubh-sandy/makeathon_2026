@@ -91,15 +91,15 @@ export default function Footer() {
                     Inquiries
                   </h4>
                   <a 
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=0lakshyasaini@gmail.com" 
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=makeathonvellore@gmail.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-xl md:text-2xl text-white hover:text-[#18BBDA] transition-colors font-light"
                   >
-                    0lakshyasaini@gmail.com
+                    makeathonvellore@gmail.com
                   </a>
                   <div className={`${montserrat.className} text-sm text-gray-400 mt-2`}>
-                    +91 6378011012
+                    +91 93091 68579
                   </div>
                </div>
                <div className="text-right hidden md:block">
