@@ -116,7 +116,7 @@ export default function MakeathonLanding() {
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
           </div>
           <span className={`${montserrat.className} text-gray-200 text-sm font-semibold tracking-widest uppercase whitespace-nowrap`}>
-            Registrations Open
+            Registrations Opening Soon
           </span>
         </div>
         
@@ -137,7 +137,7 @@ export default function MakeathonLanding() {
 
       {/* Right Section: Action Button */}
       {/* Adjusted padding (py-2) and text size (text-xs) for mobile to reduce size */}
-      <a
+      {/* <a
         href=""
         target="_blank"
         rel="noreferrer"
@@ -154,7 +154,7 @@ export default function MakeathonLanding() {
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>
-      </a>
+      </a> */}
 
     </div>
   </div>
