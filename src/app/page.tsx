@@ -126,7 +126,7 @@ export default function MakeathonLanding() {
         {/* Pricing Info */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-sm">
           <span className="text-gray-400">
-            External: <span className="text-white">₹750/- per Member</span>
+            External: <span className="text-white">₹500/- per Member</span>
           </span>
           <span className="hidden sm:inline text-gray-600">•</span>
           <span className="text-gray-400">
@@ -138,13 +138,13 @@ export default function MakeathonLanding() {
       {/* Right Section: Action Button */}
       {/* Adjusted padding (py-2) and text size (text-xs) for mobile to reduce size */}
       <a
-        href="https://events.vit.ac.in/Users/index"
+        href=""
         target="_blank"
         rel="noreferrer"
         className="flex items-center justify-center gap-2 rounded-full bg-[#18BBDA] px-6 py-2 md:py-2.5 transition-all duration-300 hover:bg-[#15a1bc] hover:shadow-[0_0_15px_-3px_#18BBDA] group/btn w-full md:w-auto"
       >
         <span className={`${montserrat.className} text-[#00121F] text-xs md:text-sm font-bold tracking-wide uppercase`}>
-          Register Now
+          Registrations Opening Soon
         </span>
         <svg 
           className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#00121F] transition-transform duration-300 group-hover/btn:translate-x-1" 
