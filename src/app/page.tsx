@@ -137,14 +137,14 @@ export default function MakeathonLanding() {
 
       {/* Right Section: Action Button */}
       {/* Adjusted padding (py-2) and text size (text-xs) for mobile to reduce size */}
-      {/* <a
-        href=""
+      <a
+        href="https://events.vit.ac.in/Home/eventDetails/000780"
         target="_blank"
         rel="noreferrer"
         className="flex items-center justify-center gap-2 rounded-full bg-[#18BBDA] px-6 py-2 md:py-2.5 transition-all duration-300 hover:bg-[#15a1bc] hover:shadow-[0_0_15px_-3px_#18BBDA] group/btn w-full md:w-auto"
       >
         <span className={`${montserrat.className} text-[#00121F] text-xs md:text-sm font-bold tracking-wide uppercase`}>
-          Registrations Opening Soon
+          Register Now
         </span>
         <svg 
           className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#00121F] transition-transform duration-300 group-hover/btn:translate-x-1" 
@@ -154,7 +154,7 @@ export default function MakeathonLanding() {
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>
-      </a> */}
+      </a>
 
     </div>
   </div>
