@@ -14,10 +14,10 @@ const stats: Stat[] = [
 ];
 
 const partners = [
-    { name: "Schneider Electric", logo: "/assets/schneider-electric.png", width: "w-56", height: "h-32" },
-    { name: "Danfoss", logo: "/assets/danfoss-logo.png", width: "w-48", height: "h-28" },
-    { name: "Agora", logo: "/assets/agora.png", width: "w-44", height: "h-28" },
-    { name: "BRAIC", logo: "/assets/braic.png", width: "w-48", height: "h-28" },
+    { name: "Schneider Electric", logo: "/assets/schneider-electric.png", width: "w-32 sm:w-40 md:w-56", height: "h-20 sm:h-24 md:h-32" },
+    { name: "Danfoss", logo: "/assets/danfoss-logo.png", width: "w-28 sm:w-36 md:w-48", height: "h-16 sm:h-20 md:h-28" },
+    { name: "Agora", logo: "/assets/agora.png", width: "w-24 sm:w-32 md:w-44", height: "h-16 sm:h-20 md:h-28" },
+    { name: "BRAIC", logo: "/assets/braic.png", width: "w-28 sm:w-36 md:w-48", height: "h-16 sm:h-20 md:h-28" },
 ];
 
 
@@ -100,12 +100,12 @@ export default function AboutUs() {
 
                                 <div className="space-y-6">
                                     <div className="relative inline-block">
-                                        <h1 className="font-ethnocentric text-5xl sm:text-6xl md:text-7xl leading-none tracking-tight text-white">
+                                        <h1 className="font-ethnocentric text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-none tracking-tight text-white">
                                             SELECT
                                         </h1>
                                         <div className="absolute -bottom-1 left-0 right-0 h-1 bg-[#18B8DA]" />
                                     </div>
-                                    <h1 className="font-ethnocentric text-5xl sm:text-6xl md:text-7xl leading-none tracking-tight -mt-5">
+                                    <h1 className="font-ethnocentric text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-none tracking-tight -mt-3 sm:-mt-5">
                                         <span className="text-[#18B8DA]">MAKEATHON</span>
                                     </h1>
 
@@ -269,29 +269,29 @@ export default function AboutUs() {
                 {/* INSTITUTIONAL DNA - Background made transparent */}
                 <section className="w-full py-20 sm:py-24 lg:py-28 border-y border-[#18B8DA]/10 relative overflow-hidden bg-transparent">
                     <div className="mx-auto max-w-7xl px-6 relative z-10">
-                        <div className="flex items-center mb-16">
-                            <div className="flex-1 h-0.75 bg-linear-to-r from-transparent via-[#18B8DA]/30 to-transparent" />
-                            <div className="px-8">
-                                <div className="flex items-center gap-4">
-                                    <div className="flex gap-1">
+                        <div className="flex flex-col sm:flex-row items-center mb-10 sm:mb-16 gap-4 sm:gap-0">
+                            <div className="hidden sm:block flex-1 h-0.75 bg-linear-to-r from-transparent via-[#18B8DA]/30 to-transparent" />
+                            <div className="px-4 sm:px-8">
+                                <div className="flex items-center justify-center gap-2 sm:gap-4">
+                                    <div className="hidden sm:flex gap-1">
                                         <div className="w-1 h-1 bg-[#18B8DA]" />
                                         <div className="w-1 h-1 bg-[#18B8DA]/60" />
                                         <div className="w-1 h-1 bg-[#18B8DA]/30" />
                                     </div>
-                                    <h2 className="text-3xl md:text-4xl font-ethnocentric text-white text-center">
+                                    <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-ethnocentric text-white text-center">
                                         Institutional <span className="text-[#18B8DA]">DNA</span>
                                     </h2>
-                                    <div className="flex gap-1">
+                                    <div className="hidden sm:flex gap-1">
                                         <div className="w-1 h-1 bg-[#18B8DA]/30" />
                                         <div className="w-1 h-1 bg-[#18B8DA]/60" />
                                         <div className="w-1 h-1 bg-[#18B8DA]" />
                                     </div>
                                 </div>
-                                <p className="text-center text-[#18B8DA]/60 text-xl font-mono mt-2 tracking-wider uppercase">
+                                <p className="text-center text-[#18B8DA]/60 text-sm sm:text-base md:text-xl font-mono mt-2 tracking-wider uppercase">
                                     Core Infrastructure
                                 </p>
                             </div>
-                            <div className="flex-1 h-0.75 bg-linear-to-r from-transparent via-[#18B8DA]/30 to-transparent" />
+                            <div className="hidden sm:block flex-1 h-0.75 bg-linear-to-r from-transparent via-[#18B8DA]/30 to-transparent" />
                         </div>
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
@@ -395,11 +395,11 @@ export default function AboutUs() {
                                 <div className="h-px flex-1 bg-[#18B8DA]/20" />
                             </div>
 
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
                                 {partners.map((p, idx) => (
                                     <div
                                         key={p.name}
-                                        className="p-4 flex items-center justify-center min-h-[100px]"
+                                        className="p-2 sm:p-3 md:p-4 flex items-center justify-center min-h-[70px] sm:min-h-[80px] md:min-h-[100px]"
                                         style={{ animationDelay: `${idx * 100}ms` }}
                                     >
                                         <img
