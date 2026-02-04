@@ -72,7 +72,7 @@ export default function AboutUs() {
             <div className="relative z-10">
 
                 {/* HERO SECTION - Removed hard backgrounds */}
-                <section className="w-full py-20 sm:py-24 lg:py-32 relative overflow-hidden bg-transparent">
+                <section className="w-full py-20 sm:py-24 lg:py-10 relative overflow-hidden bg-transparent">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
                         {/* Data visualization grid - kept but made more subtle */}
                         {/* <div className="absolute inset-0 opacity-[0.03]">
