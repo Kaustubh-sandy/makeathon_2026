@@ -110,6 +110,51 @@ const TRACKS_CONTENT: Record<string, TrackData> = {
   },
 };
 
+// Reusable Technical Report Content Component
+function TechnicalReportContent({ trackData }: { trackData: TrackData }) {
+  return (
+    <div className="border border-white/10 rounded-sm p-4 sm:p-6 lg:p-8 relative overflow-hidden bg-[#001018]">
+      <div className="absolute top-0 left-0 h-0.5 w-full bg-linear-to-r from-transparent via-[#18B8DA]/60 to-transparent opacity-40" />
+
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-6 lg:mb-8 border-b border-white/10 pb-4 lg:pb-5 relative z-10 gap-3">
+        <div>
+          <h3 className="text-sm lg:text-base font-black text-[#18B8DA] flex items-center gap-2 uppercase tracking-[0.25em] lg:tracking-[0.35em]">
+            <FileText className="w-4 h-4 lg:w-5 lg:h-5" />
+            Technical Report
+          </h3>
+          <p className="mt-2 text-white/80 font-bold text-sm lg:text-base">
+            {trackData.callName} <span className="text-white/35">/</span> <span className="font-mono text-white">{trackData.id}</span>
+          </p>
+          <p className="text-[#18B8DA]/60 text-[10px] lg:text-xs mt-1 uppercase tracking-wider">
+            {trackData.title}
+          </p>
+          <p className="text-white/35 text-[10px] lg:text-xs font-mono mt-1 tracking-[0.2em] lg:tracking-[0.25em] uppercase">
+            LOG_FILE_REF: {trackData.reportId} {trackData.reportDate && `// DATE: ${trackData.reportDate}`}
+          </p>
+        </div>
+        <div className={`self-start text-[10px] lg:text-xs font-black px-2 lg:px-3 py-1 rounded-sm border ${trackData.status === "OPERATIONAL" ? "text-emerald-300 border-emerald-300/30" : "text-[#18B8DA] border-[#18B8DA]/35"}`}>
+          {trackData.status}
+        </div>
+      </div>
+
+      <div className="space-y-6 lg:space-y-10 font-mono relative z-10">
+        {trackData.problems.map((ps) => (
+          <div key={ps.id} className="group border-l-2 border-white/10 pl-3 lg:pl-5 hover:border-[#18B8DA]/70 transition-colors">
+            <div className="flex justify-between mb-2 items-baseline gap-4">
+              <h4 className="text-[#18B8DA] font-bold text-sm lg:text-base leading-tight uppercase tracking-tight">{ps.id}: {ps.title}</h4>
+            </div>
+            <p className="text-white text-xs lg:text-sm leading-relaxed mb-3 lg:mb-4">{ps.desc}</p>
+            <div className="space-y-1 text-[10px] lg:text-xs uppercase tracking-wider">
+              <div><span className="text-[#18B8DA]/70 font-black">Constraints:</span> <span className="text-white/45">{ps.constraints}</span></div>
+              {ps.protocols && <div><span className="text-[#18B8DA]/70 font-black">Protocols:</span> <span className="text-white/45">{ps.protocols}</span></div>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function TracksHub() {
   const [activeTrack, setActiveTrack] = useState<string>("SEC-01");
   const [supportMessage, setSupportMessage] = useState<{ type: 'success' | 'error' | null; text: string }>({ type: null, text: '' });
@@ -129,61 +174,70 @@ export default function TracksHub() {
         </p>
       </div>
 
-      {/* Background Selection Grid */}
+      {/* Background Selection Grid - On mobile, show technical report inline below each selected track */}
       <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4 mb-12">
         {Object.values(TRACKS_CONTENT).map((track) => (
-          <button
-            key={track.id}
-            onClick={() => setActiveTrack(track.id)}
-            className={`cursor-target relative p-6 min-h-70 text-left border overflow-hidden transition-colors duration-300 group rounded-sm flex flex-col justify-between bg-[#001018] ${activeTrack === track.id
-              ? "border-[#18B8DA]/70 ring-1 ring-[#18B8DA]/30"
-              : "border-white/10 hover:border-[#18B8DA]/45"
-              }`}
-          >
-            <div className="absolute inset-0 pointer-events-none">
-              <div className={`absolute inset-0 transition-opacity duration-500 ${activeTrack === track.id ? "opacity-20" : "opacity-12 group-hover:opacity-16"}`}>
-                {/* <Image
-                  src={track.imageSrc}
-                  alt={track.title}
-                  fill
-                  sizes="(min-width: 1024px) 260px, (min-width: 768px) 50vw, 100vw"
-                  className="object-contain"
-                  priority={track.id === "SEC-01"}
-                /> */}
-              </div>
-              <div className="absolute inset-0 bg-linear-to-t from-[#00121F]/70 via-transparent to-transparent" />
-            </div>
-
-            <div className="relative z-10">
-              <div className="flex justify-between items-start mb-4">
-                <div className={activeTrack === track.id ? "text-[#18B8DA]" : "text-white/40 group-hover:text-[#18B8DA]"}>
-                  {track.icon}
+          <div key={track.id} className="contents lg:block">
+            <button
+              onClick={() => setActiveTrack(track.id)}
+              className={`cursor-target relative p-6 min-h-70 text-left border overflow-hidden transition-colors duration-300 group rounded-sm flex flex-col justify-between bg-[#001018] w-full ${activeTrack === track.id
+                ? "border-[#18B8DA]/70 ring-1 ring-[#18B8DA]/30"
+                : "border-white/10 hover:border-[#18B8DA]/45"
+                }`}
+            >
+              <div className="absolute inset-0 pointer-events-none">
+                <div className={`absolute inset-0 transition-opacity duration-500 ${activeTrack === track.id ? "opacity-20" : "opacity-12 group-hover:opacity-16"}`}>
+                  {/* <Image
+                    src={track.imageSrc}
+                    alt={track.title}
+                    fill
+                    sizes="(min-width: 1024px) 260px, (min-width: 768px) 50vw, 100vw"
+                    className="object-contain"
+                    priority={track.id === "SEC-01"}
+                  /> */}
                 </div>
-                <span className="text-xs font-mono text-white/35 tracking-[0.25em] uppercase">{track.id}</span>
+                <div className="absolute inset-0 bg-linear-to-t from-[#00121F]/70 via-transparent to-transparent" />
               </div>
-            </div>
 
-            <div className="relative z-10">
-              <h3 className={`text-xl font-extrabold uppercase tracking-tight transition-colors ${activeTrack === track.id ? "text-[#18B8DA]" : "text-white"}`}>
-                {track.callName}
-              </h3>
-              <p className="mt-1 text-xs text-[#18B8DA]/70 font-mono uppercase tracking-wider">
-                {track.title}
-              </p>
-              <p className="mt-2 text-sm text-white/60 leading-relaxed line-clamp-2">
-                {track.description}
-              </p>
-              <div className="mt-5 flex items-center gap-2 text-[#18B8DA] text-xs font-black uppercase tracking-[0.35em]">
-                <span>{activeTrack === track.id ? "Sector Active" : "Analyze Sector"}</span>
-                {activeTrack === track.id ? <Radar className="w-3 h-3 animate-pulse" /> : <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />}
+              <div className="relative z-10">
+                <div className="flex justify-between items-start mb-4">
+                  <div className={activeTrack === track.id ? "text-[#18B8DA]" : "text-white/40 group-hover:text-[#18B8DA]"}>
+                    {track.icon}
+                  </div>
+                  <span className="text-xs font-mono text-white/35 tracking-[0.25em] uppercase">{track.id}</span>
+                </div>
               </div>
-            </div>
-          </button>
+
+              <div className="relative z-10">
+                <h3 className={`text-xl font-extrabold uppercase tracking-tight transition-colors ${activeTrack === track.id ? "text-[#18B8DA]" : "text-white"}`}>
+                  {track.callName}
+                </h3>
+                <p className="mt-1 text-xs text-[#18B8DA]/70 font-mono uppercase tracking-wider">
+                  {track.title}
+                </p>
+                <p className="mt-2 text-sm text-white/60 leading-relaxed line-clamp-2">
+                  {track.description}
+                </p>
+                <div className="mt-5 flex items-center gap-2 text-[#18B8DA] text-xs font-black uppercase tracking-[0.35em]">
+                  <span>{activeTrack === track.id ? "Sector Active" : "Analyze Sector"}</span>
+                  {activeTrack === track.id ? <Radar className="w-3 h-3 animate-pulse" /> : <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />}
+                </div>
+              </div>
+            </button>
+
+            {/* Mobile only: Show technical report inline below the selected track */}
+            {activeTrack === track.id && (
+              <div className="lg:hidden mt-4">
+                <TechnicalReportContent trackData={track} />
+              </div>
+            )}
+          </div>
         ))}
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-8 items-start ">
-        <div className="flex-1 border border-white/10 rounded-sm p-6 sm:p-8 relative overflow-hidden bg-[#001018] ">
+      <div className="flex flex-col lg:flex-row gap-8 items-start">
+        {/* Technical Report - Hidden on mobile (shown inline above), visible on lg+ */}
+        <div className="hidden lg:block flex-1 border border-white/10 rounded-sm p-6 sm:p-8 relative overflow-hidden bg-[#001018]">
           <div className="absolute top-0 left-0 h-0.5 w-full bg-linear-to-r from-transparent via-[#18B8DA]/60 to-transparent opacity-40" />
 
           <div className="flex justify-between items-center mb-8 border-b border-white/10 pb-5 relative z-10">
