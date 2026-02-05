@@ -4,32 +4,29 @@ import Shuffle from '@/components/Shuffle';
 
 
 export default function LandingContent() {
-  
+
 
   return (
     <section
       id="hero-pin"
-      className="min-h-svh w-full px-4 flex items-center justify-center " // Ensure section bg matches
+      className="min-h-svh w-full px-4 flex items-center justify-center" // Ensure section bg matches
     >
       <div className="mx-auto flex w-full flex-col items-center justify-center text-center">
 
         {/* Eye Video Container - transparent to let FloatingLines show through */}
         <div
-          className="relative w-screen -mx-4 mb-8 overflow-hidden"
+          className="relative w-screen -mx-4 mb-8 overflow-hidden lg:pt-8"
           style={{ height: "clamp(250px, 28vw, 300px)" }}
         >
 
           {/* VIDEO WITH MASK: Fades edges to transparent so FloatingLines blend seamlessly */}
+          {/* More fade on small screens (30%), less on large screens (20%) */}
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full object-cover"
-            style={{
-              maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)'
-            }}
+            className="w-full h-full object-cover [mask-image:linear-gradient(to_bottom,transparent_0%,black_30%,black_70%,transparent_94.5%)] lg:[mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_80%,transparent_100%)]"
           >
             <source src="/assets/eye.mp4" type="video/mp4" />
           </video>
