@@ -33,7 +33,7 @@ export default function TimelinePage() {
     seconds: 0,
   });
 
-  const GOOGLE_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwHQeU3HFedLK_RYotheM933X95RD6ZFiaosdxXS-9is8ATMdahWarayeTc0tFO10zBew/exec';
+  const GOOGLE_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbygbUEWrszpJQbFX-cIFcKKCkcSoSXnsyRE06sOEqCDL9Pl1EiSlT6fH39xVRyKOQmbhg/exec';
 
   const hackathonStart = new Date("2026-03-26T18:00:00");
   const hackathonEnd = new Date("2026-03-28T06:00:00"); // 36 hours later
