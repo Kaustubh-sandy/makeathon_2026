@@ -1,26 +1,22 @@
 "use client";
 
 import Shuffle from '@/components/Shuffle';
-
+import { ArrowRight, Zap } from 'lucide-react';
 
 export default function LandingContent() {
-
 
   return (
     <section
       id="hero-pin"
-      className="min-h-svh w-full px-4 flex items-center justify-center" // Ensure section bg matches
+      className="min-h-svh w-full px-4 flex items-center justify-center"
     >
       <div className="mx-auto flex w-full flex-col items-center justify-center text-center">
 
-        {/* Eye Video Container - transparent to let FloatingLines show through */}
+        {/* Eye Video Container */}
         <div
-          className="relative w-screen -mx-4 mb-8 overflow-hidden lg:pt-8"
+          className="relative w-screen -mx-4 mb-6 overflow-hidden lg:pt-14"
           style={{ height: "clamp(250px, 28vw, 300px)" }}
         >
-
-          {/* VIDEO WITH MASK: Fades edges to transparent so FloatingLines blend seamlessly */}
-          {/* More fade on small screens (30%), less on large screens (20%) */}
           <video
             autoPlay
             loop
@@ -55,7 +51,7 @@ export default function LandingContent() {
           />
         </h1>
 
-        {/* Tagline with creative styling */}
+        {/* Tagline */}
         <p
           className="mt-6 text-sm sm:text-base md:text-lg tracking-[0.3em] uppercase font-semibold font-orbitron relative z-30"
           style={{
@@ -76,6 +72,18 @@ export default function LandingContent() {
             0%, 100% { background-position: 200% center; }
             50% { background-position: 0% center; }
           }
+          @keyframes pulse-border {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+          }
+          @keyframes scan-line {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+          }
+          @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(24, 184, 218, 0.5), 0 0 40px rgba(24, 184, 218, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(24, 184, 218, 0.7), 0 0 60px rgba(24, 184, 218, 0.5); }
+          }
         `}</style>
 
         {/* Pricing Info */}
@@ -90,7 +98,9 @@ export default function LandingContent() {
           </div>
         </div>
 
+        {/* CTA Buttons */}
         <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 relative z-40">
+          {/* Brochure Button */}
           <a
             href="/assets/SELECT Makeathon 2026.pdf"
             download="SELECT Makeathon 2026.pdf"
@@ -99,11 +109,62 @@ export default function LandingContent() {
             Brochure
           </a>
 
-          <div
-            className="cursor-not-allowed inline-flex items-center justify-center bg-[#18B8DA]/60 px-10 py-4 text-xs font-black uppercase tracking-[0.2em] text-[#00121F] shadow-[0_0_20px_rgba(24,184,218,0.3)]"
+          {/* Registration Button - Enhanced Creative Design */}
+          <a
+            href="https://forms.gle/Rf1a2PHFnbkcWpvV7"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-target group relative"
           >
-            Registration Opening Soon
+            {/* Main button */}
+            <div className="relative bg-[#18B8DA] px-10 py-4 overflow-hidden">
+              {/* Animated scan line */}
+              <div className="absolute inset-0 overflow-hidden">
+                <div 
+                  className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                  style={{ animation: 'scan-line 3s ease-in-out infinite' }}
+                />
+              </div>
+
+              {/* Status indicator */}
+              <div className="absolute top-2 right-2 flex items-center gap-1">
+                <div className="w-1.5 h-1.5 bg-[#00121F] rounded-full animate-pulse" />
+                <div className="w-1 h-1 bg-[#00121F]/60 rounded-full animate-pulse delay-75" />
+              </div>
+
+              {/* Content */}
+              <div className="relative flex items-center gap-3">
+                {/* Icon with animation */}
+                <div className="relative">
+                  <Zap className="w-4 h-4 text-[#00121F] group-hover:scale-110 transition-transform duration-300" fill="#00121F" />
+                  <div className="absolute inset-0 bg-[#00121F]/20 blur-sm animate-pulse" />
+                </div>
+
+                {/* Text */}
+                <div className="flex flex-col items-start">
+                  <span className="text-[8px] font-mono font-bold text-[#00121F]/60 uppercase tracking-[0.2em] leading-none">
+                    Access Point
+                  </span>
+                  <span className="text-xs font-black uppercase tracking-[0.2em] text-black leading-tight mt-0.5">
+                    Registrations Open
+                  </span>
+                </div>
+              </div>  
+            </div>
+
+           
+          </a>
+        </div>
+
+        {/* Registration Status Badge */}
+        <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 border border-emerald-500/30 bg-emerald-950/30 backdrop-blur-sm relative z-30">
+          <div className="relative">
+            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+            <div className="absolute inset-0 w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
           </div>
+          <span className="text-emerald-300 text-[10px] font-mono font-bold tracking-[0.25em] uppercase">
+            Active Registration Period
+          </span>
         </div>
       </div>
     </section>

@@ -175,13 +175,26 @@ export default function AboutUs() {
                                 </div>
 
                                 <div className="flex flex-wrap gap-4 -mt-6">
-                                    <div
+                                    {/* <div
                                         className="cursor-not-allowed relative overflow-hidden bg-[#18B8DA]/60 px-8 py-4 text-xs font-black uppercase tracking-[0.35em] text-[#00121F]"
                                     >
                                         <span className="relative flex items-center gap-2">
                                             Registration Opening Soon
                                         </span>
-                                    </div>
+                                    </div> */}
+
+                                    <a
+                                        href="https://forms.gle/Rf1a2PHFnbkcWpvV7"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="relative cursor-target inline-flex items-center justify-center bg-[#18B8DA] px-10 py-4 text-xs font-black uppercase tracking-[0.2em] text-[#00121F] shadow-[0_0_20px_rgba(24,184,218,0.5)] hover:bg-[#18B8DA]/90 transition-colors overflow-hidden"
+                                    >
+                                        <div 
+                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                                            style={{ animation: 'shimmer 3s ease-in-out infinite' }}
+                                        />
+                                        <span className="relative z-10">Registrations Open</span>
+                                    </a>
                                     <a
                                         href="#tracks"
                                         className="cursor-target border border-white/15 bg-[#00121F]/30 px-8 py-4 text-xs font-black uppercase tracking-[0.35em] text-white/85 transition-colors hover:border-[#18B8DA]/35 hover:bg-[#18B8DA]/10"

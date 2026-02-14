@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Zap, Users, Clock, Cpu, Utensils, Database, GitBranch, Terminal, Trophy, Radio } from "lucide-react";
+import DecryptedText from '@/components/DecryptedText';
 
 type TimelineEvent = {
   id: string;
@@ -16,7 +17,13 @@ type TimelineEvent = {
 };
 
 export default function TimelinePage() {
-  const [connectedNodes] = useState(482);
+  const [connectedNodes, setConnectedNodes] = useState<number | null>(() => {
+    if (typeof window !== 'undefined') {
+      const cached = localStorage.getItem('connectedNodes');
+      return cached ? Number(cached) : null;
+    }
+    return null;
+  });
   const [currentTime, setCurrentTime] = useState(new Date());
   const [systemVoltage, setSystemVoltage] = useState(0);
   const [countdown, setCountdown] = useState({
@@ -26,8 +33,43 @@ export default function TimelinePage() {
     seconds: 0,
   });
 
+  const GOOGLE_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwHQeU3HFedLK_RYotheM933X95RD6ZFiaosdxXS-9is8ATMdahWarayeTc0tFO10zBew/exec';
+
   const hackathonStart = new Date("2026-03-26T18:00:00");
   const hackathonEnd = new Date("2026-03-28T06:00:00"); // 36 hours later
+
+  // Fetch registration count from Google Apps Script
+  useEffect(() => {
+    const fetchRegistrationCount = async () => {
+      try {
+        // We add a cache-busting timestamp to ensure we get fresh data
+        const response = await fetch(`${GOOGLE_FORM_ENDPOINT}?t=${Date.now()}`, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Your Apps Script returns { status: "success", count: X }
+        if (data && typeof data.count === 'number') {
+          setConnectedNodes(data.count);
+          localStorage.setItem('connectedNodes', String(data.count));
+        }
+      } catch (error) {
+        console.error('Terminal Sync Error:', error);
+      }
+    };
+
+    fetchRegistrationCount();
+    const interval = setInterval(fetchRegistrationCount);
+    return () => clearInterval(interval);
+  }, []);
 
   // Rail voltage for each event (based on event ID)
   const getRailVoltage = (eventId: string) => {
@@ -242,24 +284,44 @@ export default function TimelinePage() {
                 <Users className="w-5 h-5 text-[#18B8DA]" />
               </div>
               <div className="flex items-baseline gap-2">
-                <span className="text-white text-3xl font-bold font-mono">{connectedNodes}</span>
+                <span className="text-white text-3xl font-bold font-mono">{connectedNodes !== null ? connectedNodes : '--'}</span>
                 <span className="text-white/55 text-sm font-mono uppercase">Active</span>
               </div>
             </div>
 
-            {/* Clock - Current Date & Time */}
+            {/* Clock - Makeathon Date & T-Minus Countdown */}
             <div className="border border-white/10 bg-[#001018] p-5 relative overflow-hidden group hover:border-[#18B8DA]/45 transition-colors rounded-sm">
               <div className="absolute top-0 right-0 w-16 h-16 border-l border-b border-white/10" />
               <div className="flex items-start justify-between mb-2">
-                <span className="text-white/55 text-xs font-mono tracking-[0.25em] uppercase">System Clock</span>
+                <span className="text-white/55 text-xs font-mono tracking-[0.25em] uppercase">Launch Date</span>
                 <Clock className="w-5 h-5 text-[#18B8DA]" />
               </div>
               <div className="flex flex-col gap-1">
                 <span className="text-white text-2xl font-bold font-mono">
-                  {formatDate(currentTime)} | {formatTime(currentTime)}
+                  <DecryptedText
+                    text="26 Mar 2026 | 18:00"
+                    speed={180}
+                    maxIterations={15}
+                    characters="0123456789:|-ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    animateOn="both"
+                    sequential
+                    revealDirection="start"
+                    className="text-white"
+                    encryptedClassName="text-[#18B8DA]/50"
+                  />
                 </span>
                 <span className="text-[#18B8DA]/70 text-xs font-mono uppercase tracking-wider">
-                  T-Minus {countdown.days}d {countdown.hours}h {countdown.minutes}m {countdown.seconds}s
+                  <DecryptedText
+                    text={`T-Minus ${countdown.days}d ${countdown.hours}h ${countdown.minutes}m ${countdown.seconds}s`}
+                    speed={180}
+                    maxIterations={15}
+                    characters="0123456789:|-ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    animateOn="both"
+                    sequential
+                    revealDirection="start"
+                    className="text-white"
+                    encryptedClassName="text-[#18B8DA]/70"
+                  />
                 </span>
               </div>
             </div>

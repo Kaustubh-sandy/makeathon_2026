@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import {
   Activity, ArrowRight, Shield, Sprout, Zap,
-  Radar, Headphones, FileText
+  Radar, Headphones, FileText, Lightbulb
 } from "lucide-react";
 
 type ProblemStatement = {
@@ -42,7 +42,7 @@ const TRACKS_CONTENT: Record<string, TrackData> = {
     description: "Analyzing technical challenges and mission parameters for the future of electric mobility.",
     imageSrc: "",
     icon: <Zap className="h-8 w-8" />,
-    reportId: "EV_SYS_TECH_2024_Q4.RAW",
+    reportId: "EV_SYS_TECH_2026_ALPHA.Analyzing technical challenges and mission parameters for the future of electric mobility.",
     status: "CONFIDENTIAL",
     stats: { teams: 48, bounty: "$12,000", progress: 48, timeRemaining: "48:12:05" },
     problems: [
@@ -60,7 +60,7 @@ const TRACKS_CONTENT: Record<string, TrackData> = {
     description: "Next-gen surveillance, encryption, and border tactical monitoring systems.",
     imageSrc: "",
     icon: <Shield className="h-8 w-8" />,
-    reportId: "DEF_TECH_2024_09.RAW",
+    reportId: "DEF_TECH_2026_RAW.Next-gen surveillance, encryption, and border tactical monitoring systems.",
     status: "CONFIDENTIAL",
     stats: { teams: 142, bounty: "$25,000", progress: 65, timeRemaining: "48:12:05" },
     problems: [
@@ -78,7 +78,7 @@ const TRACKS_CONTENT: Record<string, TrackData> = {
     description: "Integrating precision IoT, edge AI, and sustainable tech to revolutionize global food security.",
     imageSrc: "",
     icon: <Sprout className="h-8 w-8" />,
-    reportId: "AGRI_CORE_ANALYSIS.LOG",
+    reportId: "AGRI_CORE_ANALYSIS.LOG.Integrating precision IoT, edge AI, and sustainable tech to revolutionize global food security.",
     status: "OPERATIONAL",
     stats: { teams: 48, bounty: "$10,000", progress: 12, nodeHealth: "98%", timeRemaining: "36:45:12" },
     problems: [
@@ -96,16 +96,33 @@ const TRACKS_CONTENT: Record<string, TrackData> = {
     description: "Emergency communication mesh networks and rapid response logistics.",
     imageSrc: "",
     icon: <Activity className="h-8 w-8" />,
-    reportId: "DR_MESH_2024_ALPHA",
-    reportDate: "2024.09.15",
+    reportId: "DR_MESH_2026_ALPHA.Emergency communication mesh networks and rapid response logistics.",
+    reportDate: "2026.03.26",
     status: "OPERATIONAL",
-    stats: { teams: 29, bounty: "$15,000", progress: 22, timeRemaining: "48:12:05" },
+    stats: { teams: 29, bounty: "", progress: 22, timeRemaining: "48:12:05" },
     problems: [
-      { id: "PS_01", title: "Smart Off-Grid Mesh Communication System", desc: "Design a deployable, self-healing mesh network for emergency responders. The system must maintain voice and telemetry data flow when traditional infrastructure is destroyed.", constraints: "5km Node Range, 12h Internal Battery", protocols: "LoRaWAN / 802.11s Hybrid" },
+      { id: "PS_01", title: "Smart Off-Grid Mesh Communication System", desc: "Design a deployable, self-healing mesh network for emergency responders. The system must maintain voice and telemetry data flow when traditional infrastructure is destroyed.", constraints: "5km Node Range, 12h Internal Battery", },
       { id: "PS_02", title: "Low-Cost Disaster Early Warning System", desc: "A localized sensor fusion system (seismic, water-level, wind) for remote villages. Focus on ultra-low power consumption and community-wide alerting mechanisms.", constraints: "<$50 BOM Cost, Solar-ready" },
       { id: "PS_03", title: "Human Presence Detection Under Rubble", desc: "Develop a portable sensing unit utilizing UWB (Ultra-Wideband) radar or high-sensitivity acoustic arrays to detect micro-movements or respiratory signatures of victims.", constraints: "3m Depth Penetration" },
       { id: "PS_04", title: "Human-in-the-Loop AI Assistant", desc: "An edge-computing AI system that analyzes aerial drone footage in real-time to identify safe landing zones and survivor clusters.", constraints: "Offline Inference" },
       { id: "PS_05", title: "Open Innovation", desc: "Propose your own innovative solution related to disaster management, emergency response, or resilience systems. Bring your unique idea to save lives and improve crisis management.", constraints: "Must align with track theme; Clear problem definition; Viable MVP within 36 hours" },
+    ]
+  },
+  "SEC-05": {
+    id: "SEC-05",
+    callName: "Wild Card",
+    title: "Open Innovation",
+    description: "No boundaries. No predefined tracks. Bring your boldest, most unconventional idea to life.",
+    imageSrc: "",
+    icon: <Lightbulb className="h-8 w-8" />,
+    reportId: "OPEN_INNOV_2026.WILD.No boundaries. No predefined tracks. Bring your boldest, most unconventional idea to life.",
+    status: "OPERATIONAL",
+    stats: { teams: 60, bounty: "$20,000", progress: 10, timeRemaining: "48:12:05" },
+    problems: [
+      { id: "PS_01", title: "Cross-Domain AI Application", desc: "Build an AI-powered solution that bridges two or more traditionally separate domains (e.g., healthcare + logistics, education + gaming, finance + sustainability) to create novel value.", constraints: "Must demonstrate real-world applicability; Working prototype required; Clear user benefit" },
+      { id: "PS_02", title: "Social Impact Technology", desc: "Design a technology solution that addresses a pressing social challenge — accessibility, mental health, civic engagement, digital literacy, or community resilience.", constraints: "Must target an underserved community; Measurable impact metrics; Scalable architecture" },
+      { id: "PS_03", title: "Creative Tech & Digital Expression", desc: "Push the boundaries of creative technology — generative art, immersive experiences, interactive storytelling, or novel human-computer interaction paradigms.", constraints: "Must include a live demo; Novel interaction model; Artistic or experiential merit" },
+      { id: "PS_04", title: "Wildcard — Your Boldest Idea", desc: "This is your blank canvas. Propose and build any innovative solution that doesn't fit neatly into the other tracks. Surprise us with something we haven't seen before.", constraints: "Clear problem definition; Viable MVP within 36 hours; Judges' wow factor" },
     ]
   },
 };
@@ -175,12 +192,12 @@ export default function TracksHub() {
       </div>
 
       {/* Background Selection Grid - On mobile, show technical report inline below each selected track */}
-      <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4 mb-12">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-5 mb-12">
         {Object.values(TRACKS_CONTENT).map((track) => (
           <div key={track.id} className="contents lg:block">
             <button
               onClick={() => setActiveTrack(track.id)}
-              className={`cursor-target relative p-6 min-h-70 text-left border overflow-hidden transition-colors duration-300 group rounded-sm flex flex-col justify-between bg-[#001018] w-full ${activeTrack === track.id
+              className={`cursor-target relative p-6 min-h-70 h-full text-left border overflow-hidden transition-colors duration-300 group rounded-sm flex flex-col justify-between bg-[#001018] w-full ${activeTrack === track.id
                 ? "border-[#18B8DA]/70 ring-1 ring-[#18B8DA]/30"
                 : "border-white/10 hover:border-[#18B8DA]/45"
                 }`}

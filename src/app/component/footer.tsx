@@ -223,6 +223,9 @@ export default function Footer() {
                                     style={{ border: 0 }}
                                 />
 
+                                {/* Blue overlay to reduce brightness */}
+                                <div className="absolute inset-0 bg-[#00121F]/40 pointer-events-none" />
+
                                 {/* Scanning line effect */}
                                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                                     <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-[#18B8DA] to-transparent animate-[scan_3s_ease-in-out_infinite]" />
@@ -274,7 +277,6 @@ export default function Footer() {
                             </div>
                         </div>
 
-                        {/* Network */}
                         {/* Network */}
                         <div className="flex flex-col gap-4">
                             <div className="flex items-center gap-2 mb-2">
@@ -344,8 +346,8 @@ export default function Footer() {
                                 {(status === "success" || status === "error") && (
                                     <div className="mt-4">
                                         {status === "success" && (
-                                            <p className="text-[#18B8DA] text-xs flex items-center gap-2 font-mono">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-[#18B8DA] animate-pulse"></span>
+                                            <p className="text-emerald-400 text-xs flex items-center gap-2 font-mono">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                                                 {statusMessage || "Received. We will be in touch."}
                                             </p>
                                         )}
