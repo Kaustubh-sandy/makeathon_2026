@@ -223,7 +223,6 @@ export default function Footer() {
                                     style={{ border: 0 }}
                                 />
 
-                                {/* Blue overlay to reduce brightness */}
                                 <div className="absolute inset-0 bg-[#00121F]/40 pointer-events-none" />
 
                                 {/* Scanning line effect */}
@@ -238,6 +237,10 @@ export default function Footer() {
                                 <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-[#18B8DA]/50" />
                             </div>
                         </a>
+                        <div className="flex items-center gap-2 mb-2">
+                            <div className="w-8 h-px bg-linear-to-r from-[#18B8DA] to-transparent" />
+                            <h4 className="text-white font-bold text-xs uppercase tracking-[0.35em]">Era Sezhiyan Hall, MG Block</h4>
+                        </div>
                     </div>
 
                     {/* Contact & Network - Spans 3 columns */}

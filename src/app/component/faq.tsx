@@ -123,6 +123,41 @@ export default function FAQSection() {
       answer: "It is open to Students, Researchers, and Professionals.",
       tags: ["eligibility", "participants", "students"],
     },
+    {
+      id: "GEN-008",
+      category: "general",
+      question: "Is there a separate category for freshers?",
+      answer: "No separate fresher category exists — all participants are evaluated together. However, freshers are welcome to team up with seniors from any department.",
+      tags: ["freshers", "eligibility", "team"],
+    },
+    {
+      id: "GEN-009",
+      category: "general",
+      question: "Can we get our problem statement reviewed before the event?",
+      answer: "You're free to seek feedback from external mentors, friends, or industry professionals. However, the organizing team will not provide official validation on problem statements prior to the event.",
+      tags: ["problem-statement", "mentorship", "validation"],
+    },
+    {
+      id: "LOG-004",
+      category: "logistics",
+      question: "Is accommodation available for day scholars?",
+      answer: "Yes. Temporary hostel accommodation is available for day scholars at a fee mentioned in the event brochure. We recommend staying on-site to maximize the 36-hour development window.",
+      tags: ["accommodation", "day-scholar", "hostel"],
+    },
+    {
+      id: "GEN-010",
+      category: "general",
+      question: "Is it mandatory to have a female member in the team?",
+      answer: "No. Team formation is completely flexible regarding gender composition.",
+      tags: ["team", "composition", "gender"],
+    },
+    {
+      id: "TECH-005",
+      category: "technical",
+      question: "Can we pre-install tools and libraries before the event?",
+      answer: "Yes, we encourage it! Install all necessary development environments, tools, and libraries beforehand so you can hit the ground running. Just ensure all actual project development begins only after the hackathon officially starts.",
+      tags: ["tools", "setup", "pre-installation"],
+    },
   ], []);
 
   const categories = useMemo(
