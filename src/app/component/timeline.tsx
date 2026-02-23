@@ -33,6 +33,20 @@ type DaySchedule = {
 /* ── schedule data ──────────────────────────────────────── */
 const schedule: DaySchedule[] = [
   {
+    label: "SHORTLISTING",
+    date: "7 March 2026",
+    events: [
+      {
+        id: "00",
+        time: "7th March 2026",
+        title: "Shortlisting Round",
+        description:
+          "All registered teams will undergo evaluation. Selected teams will be notified via email.",
+        icon: <ClipboardCheck className="w-7 h-7" />,
+      },
+    ],
+  },
+  {
     label: "DAY 1",
     date: "26 March 2026",
     events: [

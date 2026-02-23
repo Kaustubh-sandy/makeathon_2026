@@ -6,6 +6,7 @@ import FAQSection from "./component/faq";
 import Footer from "./component/footer";
 import TimelinePage from "./component/timeline";
 import FloatingLines from "@/components/FloatingLines";
+import AnnouncementPopup from "./component/announcementPopup";
 
 
 export default function Page() {
@@ -55,6 +56,8 @@ export default function Page() {
         <Footer />
       </div>
 
+      {/* Announcement Popup */}
+      <AnnouncementPopup />
     </main>
   );
 }

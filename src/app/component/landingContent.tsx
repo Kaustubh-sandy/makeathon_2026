@@ -102,7 +102,7 @@ export default function LandingContent() {
         <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 relative z-40">
           {/* Brochure Button */}
           <a
-            href="/assets/SELECT Makeathon 2026.pdf"
+            href="/assets/Makeathon'26 Brochure (Outreach).pdf"
             download="SELECT Makeathon 2026.pdf"
             className="cursor-target inline-flex items-center justify-center border border-white/15 bg-white/5 px-8 py-4 text-xs font-black uppercase tracking-[0.3em] text-white/85 backdrop-blur-md transition hover:bg-white/10"
           >
@@ -120,7 +120,7 @@ export default function LandingContent() {
             <div className="relative bg-[#18B8DA] px-10 py-4 overflow-hidden">
               {/* Animated scan line */}
               <div className="absolute inset-0 overflow-hidden">
-                <div 
+                <div
                   className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
                   style={{ animation: 'scan-line 3s ease-in-out infinite' }}
                 />
@@ -149,10 +149,10 @@ export default function LandingContent() {
                     Registrations Open
                   </span>
                 </div>
-              </div>  
+              </div>
             </div>
 
-           
+
           </a>
         </div>
 
