@@ -216,7 +216,7 @@ export default function Footer() {
                                 {/* Embedded Google Map (non-interactive; click opens Google Maps in new tab) */}
                                 <iframe
                                     title="Vellore Institute of Technology Map"
-                                    src="https://www.google.com/maps?output=embed&z=15&ll=12.9692232,79.1559336&q=Vellore%20Institute%20of%20Technology"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0016983728538!2d79.16379783256245!3d12.971742866118117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bad473f91bcbc95%3A0xa960c836093e6a83!2sGandhi%20Block%2C%20VIT%20University!5e0!3m2!1sen!2sin!4v1771828420443!5m2!1sen!2sin"
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"
                                     className="absolute inset-0 w-full h-full pointer-events-none"
