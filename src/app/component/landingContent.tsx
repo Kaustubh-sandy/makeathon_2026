@@ -89,7 +89,9 @@ export default function LandingContent() {
         {/* Pricing Info */}
         <div className="mt-8 flex items-center justify-center gap-6 text-xs font-mono uppercase tracking-wider relative z-30">
           <div className="flex items-center gap-2 px-4 py-2 border border-[#18B8DA]/30 bg-[#00121F]/50 backdrop-blur-sm">
-            <span className="text-white/60">VIT Students:</span>
+            <span className="text-white/60">VIT Students </span>
+            <span className="text-white font-bold">(ALL CAMPUS) </span>
+            <span className="text-white/60">:</span>
             <span className="text-[#18B8DA] font-bold">Free</span>
           </div>
           <div className="flex items-center gap-2 px-4 py-2 border border-white/20 bg-[#00121F]/50 backdrop-blur-sm">
