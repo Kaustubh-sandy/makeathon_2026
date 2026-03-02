@@ -95,6 +95,27 @@ export default function AnnouncementPopup() {
                             We encourage all participants to prepare their ideas and
                             submissions carefully.
                         </p>
+
+                        {/* Separate Message Box: Team Formation Clarification */}
+                        <div className="mt-3 rounded-lg border border-[#18B8DA]/25 bg-[#18B8DA]/8 p-3 sm:p-3.5 text-[11px] sm:text-xs leading-relaxed">
+                            <p className="mb-2 font-bold uppercase tracking-[0.14em] text-[#18B8DA] font-orbitron text-[10px] sm:text-[11px]">
+                                Team Formation Update
+                            </p>
+                            <ul className="space-y-1.5 text-white/90">
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#18B8DA]/60" />
+                                    <span>Inter-college teams are allowed.</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#18B8DA]/60" />
+                                    <span>If any member is from a VIT campus, only the VIT student must submit the registration form.</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#18B8DA]/60" />
+                                    <span>Follow this rule strictly to avoid disqualification during verification.</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                     {/* CTA Button */}
