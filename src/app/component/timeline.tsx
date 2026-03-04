@@ -446,7 +446,7 @@ export default function TimelinePage() {
               <div className="flex flex-col gap-1">
                 <span className="text-white text-2xl font-bold font-mono">
                   <DecryptedText
-                    text="26 Mar 2026 | 18:00"
+                    text="26 Mar 2026 | 08:00"
                     speed={180}
                     maxIterations={15}
                     characters="0123456789:|-ABCDEFGHIJKLMNOPQRSTUVWXYZ"
