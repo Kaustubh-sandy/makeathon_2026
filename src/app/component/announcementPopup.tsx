@@ -53,12 +53,12 @@ export default function AnnouncementPopup() {
 
                 {/* Content */}
                 <div className="p-5 pr-12">
-                    {/* Flash Alert: Registration Deadline */}
-                    <div className="mb-3 rounded-none border border-amber-400/35 bg-amber-400/10 px-3 py-2.5 sm:px-3.5 sm:py-3">
+                    {/* Flash Alert: Registration Closed */}
+                    <div className="mb-3 rounded-none border border-rose-400/35 bg-rose-400/10 px-3 py-2.5 sm:px-3.5 sm:py-3">
                         <div className="flex items-start gap-2.5">
-                            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-300 animate-pulse" />
-                            <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.14em] text-amber-200 leading-relaxed">
-                                Registration closes on 7th March, 11:59 PM (Midnight).
+                            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-rose-300" />
+                            <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.14em] text-rose-200 leading-relaxed">
+                                Registrations closed on 7th March, 11:59 PM.
                             </p>
                         </div>
                     </div>
@@ -69,7 +69,7 @@ export default function AnnouncementPopup() {
                             <Bell className="h-4 w-4 text-[#18B8DA]" />
                         </div>
                         <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-white font-orbitron">
-                            Shortlisting Update
+                            Registration Closed
                         </h3>
                     </div>
 
@@ -79,14 +79,14 @@ export default function AnnouncementPopup() {
                     {/* Body */}
                     <div className="space-y-2.5 text-[13px] leading-relaxed text-white">
                         <p className="font-semibold text-[#18B8DA]/90">
-                            Shortlisting Round scheduled {" "}
-                            <span className="text-green-500 font-bold">Next Week</span>.
+                            Registration phase has ended. {" "}
+                            <span className="text-green-500 font-bold">Shortlisting updates soon</span>.
                         </p>
 
                         <ul className="space-y-1.5 pl-0">
                             <li className="flex items-start gap-2">
                                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-none bg-[#18B8DA]/50" />
-                                <span>All registered teams will undergo evaluation.</span>
+                                <span>All successfully registered teams will undergo evaluation.</span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-none bg-[#18B8DA]/50" />
@@ -102,14 +102,13 @@ export default function AnnouncementPopup() {
                         </ul>
 
                         <p className="mt-1 border-l-2 border-[#18B8DA]/30 pl-3 text-xs italic text-white/70">
-                            We encourage all participants to prepare their ideas and
-                            submissions carefully.
+                            Thank you for the overwhelming response. Please wait for the shortlisting results.
                         </p>
 
-                        {/* Separate Message Box: Team Formation Clarification */}
+                        {/* Separate Message Box: Team Verification Clarification */}
                         <div className="mt-3 rounded-none border border-[#18B8DA]/25 bg-[#18B8DA]/8 p-3 sm:p-3.5 text-[11px] sm:text-xs leading-relaxed">
                             <p className="mb-2 font-bold uppercase tracking-[0.14em] text-[#18B8DA] font-orbitron text-[10px] sm:text-[11px]">
-                                Team Formation Update
+                                Team Verification Note
                             </p>
                             <ul className="space-y-1.5 text-white/90">
                                 <li className="flex items-start gap-2">
@@ -118,7 +117,7 @@ export default function AnnouncementPopup() {
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-none bg-[#18B8DA]/60" />
-                                    <span>If any member is from a VIT campus, only the VIT student must submit the registration form.</span>
+                                    <span>If any member is from a VIT campus, the submitted registration by that VIT student will be used for verification.</span>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-none bg-[#18B8DA]/60" />

@@ -1,7 +1,7 @@
 "use client";
 
 import Shuffle from '@/components/Shuffle';
-import { ArrowRight, Zap } from 'lucide-react';
+import { Lock } from 'lucide-react';
 
 export default function LandingContent() {
 
@@ -22,7 +22,7 @@ export default function LandingContent() {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover [mask-image:linear-gradient(to_bottom,transparent_0%,black_30%,black_70%,transparent_94.5%)] lg:[mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_80%,transparent_100%)]"
+            className="w-full h-full object-cover mask-[linear-gradient(to_bottom,transparent_0%,black_30%,black_70%,transparent_94.5%)] lg:mask-[linear-gradient(to_bottom,transparent_0%,black_20%,black_80%,transparent_100%)]"
           >
             <source src="/assets/eye.mp4" type="video/mp4" />
           </video>
@@ -111,61 +111,52 @@ export default function LandingContent() {
             Brochure
           </a>
 
-          {/* Registration Button - Enhanced Creative Design */}
-          <a
-            href="https://forms.gle/Rf1a2PHFnbkcWpvV7"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cursor-target group relative"
+          {/* Registration Status - Closed */}
+          <div
+            aria-live="polite"
+            className="cursor-not-allowed group relative"
           >
-            {/* Main button */}
-            <div className="relative bg-[#18B8DA] px-10 py-4 overflow-hidden">
+            <div className="relative bg-zinc-500/90 px-10 py-4 overflow-hidden border border-white/20">
               {/* Animated scan line */}
               <div className="absolute inset-0 overflow-hidden">
                 <div
-                  className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                  style={{ animation: 'scan-line 3s ease-in-out infinite' }}
+                  className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent"
+                  style={{ animation: 'scan-line 4s ease-in-out infinite' }}
                 />
               </div>
 
               {/* Status indicator */}
               <div className="absolute top-2 right-2 flex items-center gap-1">
-                <div className="w-1.5 h-1.5 bg-[#00121F] rounded-full animate-pulse" />
-                <div className="w-1 h-1 bg-[#00121F]/60 rounded-full animate-pulse delay-75" />
+                <div className="w-1.5 h-1.5 bg-rose-900 rounded-full" />
+                <div className="w-1 h-1 bg-rose-900/60 rounded-full" />
               </div>
 
               {/* Content */}
               <div className="relative flex items-center gap-3">
-                {/* Icon with animation */}
                 <div className="relative">
-                  <Zap className="w-4 h-4 text-[#00121F] group-hover:scale-110 transition-transform duration-300" fill="#00121F" />
-                  <div className="absolute inset-0 bg-[#00121F]/20 blur-sm animate-pulse" />
+                  <Lock className="w-4 h-4 text-rose-950" />
                 </div>
 
-                {/* Text */}
                 <div className="flex flex-col items-start">
-                  <span className="text-[8px] font-mono font-bold text-[#00121F]/60 uppercase tracking-[0.2em] leading-none">
+                  <span className="text-[8px] font-mono font-bold text-zinc-900/70 uppercase tracking-[0.2em] leading-none">
                     Access Point
                   </span>
-                  <span className="text-xs font-black uppercase tracking-[0.2em] text-black leading-tight mt-0.5">
-                    Registrations Open
+                  <span className="text-xs font-black uppercase tracking-[0.2em] text-rose-950 leading-tight mt-0.5">
+                    Registrations Closed
                   </span>
                 </div>
               </div>
             </div>
-
-
-          </a>
+          </div>
         </div>
 
         {/* Registration Status Badge */}
-        <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 border border-emerald-500/30 bg-emerald-950/30 backdrop-blur-sm relative z-30">
+        <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 border border-rose-500/30 bg-rose-950/30 backdrop-blur-sm relative z-30">
           <div className="relative">
-            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-            <div className="absolute inset-0 w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
+            <div className="w-2 h-2 bg-rose-400 rounded-full" />
           </div>
-          <span className="text-emerald-300 text-[10px] font-mono font-bold tracking-[0.25em] uppercase">
-            Active Registration Period
+          <span className="text-rose-300 text-[10px] font-mono font-bold tracking-[0.25em] uppercase">
+            Registration Window Closed
           </span>
         </div>
       </div>

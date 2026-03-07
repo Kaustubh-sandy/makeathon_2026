@@ -1,5 +1,5 @@
 "use client";
-import { GraduationCap, Zap, ArrowRight, Activity, Database, Cpu } from "lucide-react";
+import { GraduationCap, Zap, Activity, Database, Cpu } from "lucide-react";
 import { useState, useEffect } from "react";
 
 type Stat = { label: string; value: string; prefix?: string; animated?: boolean };
@@ -181,18 +181,16 @@ export default function AboutUs() {
                                         </span>
                                     </div> */}
 
-                                    <a
-                                        href="https://forms.gle/Rf1a2PHFnbkcWpvV7"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="relative cursor-target inline-flex items-center justify-center bg-[#18B8DA] px-10 py-4 text-xs font-black uppercase tracking-[0.2em] text-[#00121F] shadow-[0_0_20px_rgba(24,184,218,0.5)] hover:bg-[#18B8DA]/90 transition-colors overflow-hidden"
+                                    <div
+                                        aria-live="polite"
+                                        className="relative cursor-not-allowed inline-flex items-center justify-center bg-zinc-500/90 px-10 py-4 text-xs font-black uppercase tracking-[0.2em] text-white/90 border border-white/20 overflow-hidden"
                                     >
-                                        <div 
-                                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                                            style={{ animation: 'shimmer 3s ease-in-out infinite' }}
+                                        <div
+                                            className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent"
+                                            style={{ animation: "shimmer 3s ease-in-out infinite" }}
                                         />
-                                        <span className="relative z-10">Registrations Open</span>
-                                    </a>
+                                        <span className="relative z-10">Registrations Closed</span>
+                                    </div>
                                     <a
                                         href="#tracks"
                                         className="cursor-target border border-white/15 bg-[#00121F]/30 px-8 py-4 text-xs font-black uppercase tracking-[0.35em] text-white/85 transition-colors hover:border-[#18B8DA]/35 hover:bg-[#18B8DA]/10"
@@ -328,7 +326,7 @@ export default function AboutUs() {
                                         <GraduationCap className="text-[#18B8DA]/25" size={48} strokeWidth={1} />
                                     </div>
                                     <p className="text-white mb-8 leading-relaxed text-xl">
-                                        Vellore Institute of Technology (VIT) is one of India’s leading private universities, accredited with A++ by NAAC and consistently ranked among the top institutions by NIRF.
+                                        Vellore Institute of Technology (VIT) is one of India&apos;s leading private universities, accredited with A++ by NAAC and consistently ranked among the top institutions by NIRF.
                                         With 40,000+ students and strong industry and international collaborations, VIT provides an ideal ecosystem for innovation-driven events like Makeathon.
                                     </p>
                                     <div className="grid grid-cols-2 gap-4 border-t border-[#18B8DA]/20 pt-6 mt-auto">

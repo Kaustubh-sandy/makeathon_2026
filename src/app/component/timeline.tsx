@@ -34,7 +34,7 @@ type DaySchedule = {
 const schedule: DaySchedule[] = [
   {
     label: "SHORTLISTING",
-    date: "7 March 2026",
+    date: "Next week",
     events: [
       {
         id: "00",
@@ -407,10 +407,10 @@ export default function TimelinePage() {
               </div>
               <div className="flex items-baseline gap-2">
                 <span className="text-white text-3xl font-bold font-mono">
-                  {systemVoltage.toFixed(2)}V
+                  {/* {systemVoltage.toFixed(2)}V */} 220V
                 </span>
                 <span className="text-white/55 text-sm font-mono uppercase">
-                  Nominal
+                  Standard
                 </span>
               </div>
             </div>
