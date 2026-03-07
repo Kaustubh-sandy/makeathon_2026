@@ -14,10 +14,8 @@ const stats: Stat[] = [
 ];
 
 const partners = [
-    { name: "Schneider Electric", logo: "/assets/schneider-electric.png", width: "w-32 sm:w-40 md:w-56", height: "h-20 sm:h-24 md:h-32" },
-    { name: "Danfoss", logo: "/assets/danfoss-logo.png", width: "w-28 sm:w-36 md:w-48", height: "h-16 sm:h-20 md:h-28" },
-    { name: "Agora", logo: "/assets/agora.png", width: "w-24 sm:w-32 md:w-44", height: "h-16 sm:h-20 md:h-28" },
-    { name: "BRAIC", logo: "/assets/braic.png", width: "w-28 sm:w-36 md:w-48", height: "h-16 sm:h-20 md:h-28" },
+    { name: "EASEMYTRIP", logo: "/assets/EASEMYTRIP.png", width: "w-32 sm:w-40 md:w-56", height: "h-20 sm:h-24 md:h-32" },
+    { name: "Johnsons", logo: "/assets/Johnson Lifts Logo Vector Final 2026.png", width: "w-28 sm:w-36 md:w-48", height: "h-16 sm:h-20 md:h-28" },
 ];
 
 
@@ -408,7 +406,7 @@ export default function AboutUs() {
                                 <div className="h-px flex-1 bg-[#18B8DA]/20" />
                             </div>
 
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+                            <div className="grid grid-cols-2 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
                                 {partners.map((p, idx) => (
                                     <div
                                         key={p.name}

@@ -38,7 +38,7 @@ const schedule: DaySchedule[] = [
     events: [
       {
         id: "00",
-        time: "7th March 2026",
+        time: "Next week",
         title: "Shortlisting Round",
         description:
           "All registered teams will undergo evaluation. Selected teams will be notified via email.",

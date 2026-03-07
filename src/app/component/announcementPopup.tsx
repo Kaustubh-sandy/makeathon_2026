@@ -79,8 +79,8 @@ export default function AnnouncementPopup() {
                     {/* Body */}
                     <div className="space-y-2.5 text-[13px] leading-relaxed text-white">
                         <p className="font-semibold text-[#18B8DA]/90">
-                            Shortlisting Round scheduled on{" "}
-                            <span className="text-green-500 font-bold">7th March 2026</span>.
+                            Shortlisting Round scheduled {" "}
+                            <span className="text-green-500 font-bold">Next Week</span>.
                         </p>
 
                         <ul className="space-y-1.5 pl-0">
