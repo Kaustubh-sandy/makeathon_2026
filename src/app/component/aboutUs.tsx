@@ -1,4 +1,5 @@
 "use client";
+import TiltedCard from "@/components/TiltedCard";
 import { GraduationCap, Zap, Activity, Database, Cpu } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -16,6 +17,7 @@ const stats: Stat[] = [
 const partners = [
     { name: "EASEMYTRIP", logo: "/assets/EASEMYTRIP.png", width: "w-32 sm:w-40 md:w-56", height: "h-20 sm:h-24 md:h-32" },
     { name: "Johnsons", logo: "/assets/Johnson Lifts Logo Vector Final 2026.png", width: "w-28 sm:w-36 md:w-48", height: "h-16 sm:h-20 md:h-28" },
+    { name: "British", logo: "/assets/british_council.jpeg", width: "w-32 sm:w-40 md:w-56", height: "h-20 sm:h-24 md:h-32" },
 ];
 
 
@@ -404,7 +406,7 @@ export default function AboutUs() {
                                 <div className="h-px flex-1 bg-[#18B8DA]/20" />
                             </div>
 
-                            <div className="grid grid-cols-2 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+                            <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
                                 {partners.map((p, idx) => (
                                     <div
                                         key={p.name}
@@ -418,6 +420,91 @@ export default function AboutUs() {
                                         />
                                     </div>
                                 ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* CHIEF GUESTS SECTION */}
+                <section id="guests" className="w-full py-14 sm:py-18 lg:py-20 border-t border-[#18B8DA]/10 relative overflow-hidden bg-transparent">
+                    <div className="mx-auto max-w-5xl px-6 relative z-10">
+                        <div className="flex flex-col sm:flex-row items-center mb-10 sm:mb-16 gap-4 sm:gap-0">
+                            <div className="hidden sm:block flex-1 h-0.75 bg-linear-to-r from-transparent via-[#18B8DA]/30 to-transparent" />
+                            <div className="px-4 sm:px-8">
+                                <div className="flex items-center justify-center gap-2 sm:gap-4">
+                                    <div className="hidden sm:flex gap-1">
+                                        <div className="w-1 h-1 bg-[#18B8DA]" />
+                                        <div className="w-1 h-1 bg-[#18B8DA]/60" />
+                                        <div className="w-1 h-1 bg-[#18B8DA]/30" />
+                                    </div>
+                                    <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-ethnocentric text-white text-center">
+                                        Chief <span className="text-[#18B8DA]">Guests</span>
+                                    </h2>
+                                    <div className="hidden sm:flex gap-1">
+                                        <div className="w-1 h-1 bg-[#18B8DA]/30" />
+                                        <div className="w-1 h-1 bg-[#18B8DA]/60" />
+                                        <div className="w-1 h-1 bg-[#18B8DA]" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="hidden sm:block flex-1 h-0.75 bg-linear-to-r from-transparent via-[#18B8DA]/30 to-transparent" />
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-2xl mx-auto">
+                            {/* Chief Guest 1 */}
+                            <div className="relative group">
+                                <div className="absolute inset-0 bg-[#18B8DA]/5 rounded-sm transition-all duration-300 group-hover:bg-[#18B8DA]/10 opacity-0 group-hover:opacity-100" />
+                                <div className="border border-white/10 bg-[#001018] p-3 sm:p-4 rounded-sm h-full flex flex-col items-center justify-center relative z-10 transition-all duration-300 group-hover:border-[#18B8DA]/30">
+                                    <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
+                                    <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
+                                    <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
+                                    <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
+
+                                    
+
+                                    <div className="relative rounded-sm">
+                                        <TiltedCard
+                                            imageSrc="/assets/DR. Pascal Maussion.png"
+                                            altText="Dr. Pascal Maussion"
+                                            captionText="Dr. Pascal Maussion"
+                                            containerHeight="400px"
+                                            containerWidth="250px"
+                                            imageHeight="400px"
+                                            imageWidth="250px"
+                                            rotateAmplitude={12}
+                                            scaleOnHover={1}
+                                            showMobileWarning={false}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Chief Guest 2 */}
+                            <div className="relative group">
+                                <div className="absolute inset-0 bg-[#18B8DA]/5 rounded-sm transition-all duration-300 group-hover:bg-[#18B8DA]/10 opacity-0 group-hover:opacity-100" />
+                                <div className="border border-white/10 bg-[#001018] p-3 sm:p-4 rounded-sm h-full flex flex-col items-center justify-center relative z-10 transition-all duration-300 group-hover:border-[#18B8DA]/30">
+                                    <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
+                                    <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
+                                    <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
+                                    <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
+
+                                    
+
+                                    <div className="relative rounded-sm">
+                                        <TiltedCard
+                                            imageSrc="/assets/Lt Cdr Chandresh Mittal.png"
+                                            altText="Lt Cdr Chandresh Mittal"
+                                            captionText="Lt Cdr Chandresh Mittal"
+                                            containerHeight="400px"
+                                            containerWidth="250px"
+                                            imageHeight="400px"
+                                            imageWidth="250px"
+                                            rotateAmplitude={12}
+                                            scaleOnHover={1}
+                                            showMobileWarning={false}
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

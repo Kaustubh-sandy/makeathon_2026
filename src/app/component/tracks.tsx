@@ -178,7 +178,7 @@ export default function TracksHub() {
   const currentData = TRACKS_CONTENT[activeTrack];
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 text-white selection: overflow-x-hidden">
+    <div className="mx-auto w-full -mt-20 max-w-6xl px-4 sm:px-6 text-white selection: overflow-x-hidden">
 
       {/* Title Section */}
       <div className="mb-10 border-l-2 border-[#18B8DA] pl-5">

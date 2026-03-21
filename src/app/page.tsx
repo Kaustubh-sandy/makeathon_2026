@@ -7,6 +7,7 @@ import Footer from "./component/footer";
 import TimelinePage from "./component/timeline";
 import FloatingLines from "@/components/FloatingLines";
 import AnnouncementPopup from "./component/announcementPopup";
+import OrganisingTeam from "./component/organisingTeam";
 
 
 export default function Page() {
@@ -51,6 +52,10 @@ export default function Page() {
 
         <section id="faqs" className="scroll-mt-20 py-20 sm:py-24">
           <FAQSection />
+        </section>
+
+        <section id="oc" className="scroll ">
+          <OrganisingTeam />
         </section>
 
         <Footer />

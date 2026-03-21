@@ -196,7 +196,7 @@ export default function FAQSection() {
   }, [activeCategory, faqData]);
 
   return (
-    <div className="relative min-h-screen w-full  py-0 px-4 overflow-hidden">
+    <div className="relative w-full -mt-10 py-0 px-4 overflow-hidden">
       {/* Circuit board background */}
       <div className="absolute inset-0 opacity-[0.015]">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">

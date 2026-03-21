@@ -343,7 +343,7 @@ export default function TimelinePage() {
   }, []);
 
   return (
-    <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 py-20 sm:py-24 text-white">
+    <div className="relative mx-auto -mt-10 w-full max-w-6xl px-4 sm:px-6 text-white">
       {/* Subtle circuit pattern */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.02]">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">

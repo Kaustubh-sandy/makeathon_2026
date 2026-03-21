@@ -27,9 +27,11 @@ export default function Navbar() {
     () => [
       { label: "Home", href: "#" },
       { label: "About US", href: "#about" },
+      { label: "Guests", href: "#guests" },
       { label: "Tracks", href: "#tracks" },
       { label: "Timeline", href: "#timeline" },
       { label: "FAQs", href: "#faqs" },
+      { label: "OC", href: "#oc" },
     ],
     []
   );
@@ -78,10 +80,10 @@ export default function Navbar() {
           </div>
 
           {/* LEFT VERTICAL SEPARATOR */}
-          <div className="hidden md:block h-12 w-0.75 bg-white/10" />
+          <div className="hidden lg:block h-12 w-0.75 bg-white/10" />
 
           {/* Center Navigation */}
-          <nav className="hidden md:flex items-center justify-center gap-10 flex-1 px-6">
+          <nav className="hidden lg:flex items-center justify-center gap-4 lg:gap-6 xl:gap-10 flex-1 px-4 xl:px-6">
             {items.map((item) => (
               <NavA key={item.href} href={item.href}>
                 {item.label}
@@ -90,7 +92,7 @@ export default function Navbar() {
           </nav>
 
           {/* RIGHT VERTICAL SEPARATOR */}
-          <div className="hidden md:block h-12 w-0.75 bg-white/10" />
+          <div className="hidden lg:block h-12 w-0.75 bg-white/10" />
 
           {/* Right Logo Container */}
           <div className="flex items-center justify-center w-32 sm:w-48 h-full pl-6 pr-2">
@@ -106,7 +108,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="cursor-target md:hidden ml-4 rounded-sm  p-2 text-white/80 border border-white/15 hover:border-[#18B8DA]/45 transition-colors"
+            className="cursor-target lg:hidden ml-4 rounded-sm p-2 text-white/80 border border-white/15 hover:border-[#18B8DA]/45 transition-colors"
             onClick={() => setMobileOpen((v) => !v)}
           >
             <div className="h-4 w-5 flex flex-col justify-between">
@@ -123,7 +125,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       {mobileOpen && (
-        <div className="md:hidden border-b border-[#18B8DA]/20 bg-[#00121F]">
+        <div className="lg:hidden border-b border-[#18B8DA]/20 bg-[#00121F]">
           <div className="flex flex-col">
             {items.map((item) => (
               <a
