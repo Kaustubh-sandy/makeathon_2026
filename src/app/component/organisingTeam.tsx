@@ -119,13 +119,13 @@ const organisingTeamMembers: TeamMember[] = [
 		imageSrc: "/assets/OG_S/6_back.png",
 		flipImageSrc: "/assets/OG_S/6_front.svg"
 	},
-	{
-		slot: "Team_019",
-		name: "Lakshya Saini",
-		role: "Organising Team",
-		imageSrc: "/assets/OG_S/19_back.png",
-		flipImageSrc: "/assets/OG_S/19_front.svg"
-	},
+	// {
+	// 	slot: "Team_019",
+	// 	name: "Lakshya Saini",
+	// 	role: "Organising Team",
+	// 	imageSrc: "/assets/OG_S/19_back.png",
+	// 	flipImageSrc: "/assets/OG_S/19_front.svg"
+	// },
 	{
 		slot: "Team_007",
 		name: "Bhavya Singla",
@@ -166,73 +166,73 @@ const organisingTeamMembers: TeamMember[] = [
 		imageSrc: "/assets/OG_S/5_back.png",
 		flipImageSrc: "/assets/OG_S/5_front.svg"
 	},
-	{
-		slot: "Team_020",
-		name: "Amar Hamdan",
-		role: "Organising Team",
-		imageSrc: "/assets/OG_S/Amar hAMDAN.png"
-	},
-	{
-		slot: "Team_021",
-		name: "Arnav Gupta",
-		role: "Organising Team",
-		imageSrc: "/assets/OG_S/Arnav Gupta.png"
-	},
-	{
-		slot: "Team_022",
-		name: "aRYA mISHRA",
-		role: "Organising Team",
-		imageSrc: "/assets/OG_S/aRYA mISHRA.png"
-	},
+	// {
+	// 	slot: "Team_020",
+	// 	name: "Amar Hamdan",
+	// 	role: "Organising Team",
+	// 	imageSrc: "/assets/OG_S/Amar hAMDAN.png"
+	// },
+	// {
+	// 	slot: "Team_021",
+	// 	name: "Arnav Gupta",
+	// 	role: "Organising Team",
+	// 	imageSrc: "/assets/OG_S/Arnav Gupta.png"
+	// },
+	// {
+	// 	slot: "Team_022",
+	// 	name: "aRYA mISHRA",
+	// 	role: "Organising Team",
+	// 	imageSrc: "/assets/OG_S/aRYA mISHRA.png"
+	// },
 
-	{
-		slot: "Team_025",
-		name: "Palak Kumawat",
-		role: "Organising Team",
-		imageSrc: "/assets/OG_S/Palak Kumawat.png"
-	},
-	{
-		slot: "Team_026",
-		name: "Prakhar Patel",
-		role: "Organising Team",
-		imageSrc: "/assets/OG_S/Prakhar Patel.png"
-	},
-	{
-		slot: "Team_027",
-		name: "Prakul k hebbur",
-		role: "Organising Team",
-		imageSrc: "/assets/OG_S/Prakul k hebbur.png"
-	},
-	{
-		slot: "Team_028",
-		name: "Pranav Sajeev",
-		role: "Organising Team",
-		imageSrc: "/assets/OG_S/Pranav Sajeev.png"
-	},
-	{
-		slot: "Team_029",
-		name: "Riddhi tambi",
-		role: "Organising Team",
-		imageSrc: "/assets/OG_S/Riddhi tambi.png"
-	},
-	{
-		slot: "Team_030",
-		name: "Rishi kinger",
-		role: "Organising Team",
-		imageSrc: "/assets/OG_S/Rishi kinger.png"
-	},
-	{
-		slot: "Team_031",
-		name: "Vasabdatwa Patra",
-		role: "Organising Team",
-		imageSrc: "/assets/OG_S/Vasabdatwa Patra.png"
-	},
-	{
-		slot: "Team_032",
-		name: "YUG ARORA",
-		role: "Organising Team",
-		imageSrc: "/assets/OG_S/YUG ARORA.png"
-	},
+	// {
+	// 	slot: "Team_025",
+	// 	name: "Palak Kumawat",
+	// 	role: "Organising Team",
+	// 	imageSrc: "/assets/OG_S/Palak Kumawat.png"
+	// },
+	// {
+	// 	slot: "Team_026",
+	// 	name: "Prakhar Patel",
+	// 	role: "Organising Team",
+	// 	imageSrc: "/assets/OG_S/Prakhar Patel.png"
+	// },
+	// {
+	// 	slot: "Team_027",
+	// 	name: "Prakul k hebbur",
+	// 	role: "Organising Team",
+	// 	imageSrc: "/assets/OG_S/Prakul k hebbur.png"
+	// },
+	// {
+	// 	slot: "Team_028",
+	// 	name: "Pranav Sajeev",
+	// 	role: "Organising Team",
+	// 	imageSrc: "/assets/OG_S/Pranav Sajeev.png"
+	// },
+	// {
+	// 	slot: "Team_029",
+	// 	name: "Riddhi tambi",
+	// 	role: "Organising Team",
+	// 	imageSrc: "/assets/OG_S/Riddhi tambi.png"
+	// },
+	// {
+	// 	slot: "Team_030",
+	// 	name: "Rishi kinger",
+	// 	role: "Organising Team",
+	// 	imageSrc: "/assets/OG_S/Rishi kinger.png"
+	// },
+	// {
+	// 	slot: "Team_031",
+	// 	name: "Vasabdatwa Patra",
+	// 	role: "Organising Team",
+	// 	imageSrc: "/assets/OG_S/Vasabdatwa Patra.png"
+	// },
+	// {
+	// 	slot: "Team_032",
+	// 	name: "YUG ARORA",
+	// 	role: "Organising Team",
+	// 	imageSrc: "/assets/OG_S/YUG ARORA.png"
+	// },
 ];
 
 export default function OrganisingTeam() {
