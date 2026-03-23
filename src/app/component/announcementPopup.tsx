@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { X, Bell, AlertTriangle } from "lucide-react";
+import { X, Bell, AlertTriangle, CircleCheckBig } from "lucide-react";
 
 export default function AnnouncementPopup() {
     const [visible, setVisible] = useState(false);
@@ -54,11 +54,11 @@ export default function AnnouncementPopup() {
                 {/* Content */}
                 <div className="p-5 pr-12">
                     {/* Flash Alert: Registration Closed */}
-                    <div className="mb-3 rounded-none border border-rose-400/35 bg-rose-400/10 px-3 py-2.5 sm:px-3.5 sm:py-3">
+                    <div className="mb-3 rounded-none border border-green-500/35 bg-green-400/10 px-3 py-2.5 sm:px-3.5 sm:py-3">
                         <div className="flex items-start gap-2.5">
-                            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-rose-300" />
-                            <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.14em] text-rose-200 leading-relaxed">
-                                Registrations closed on 7th March, 11:59 PM.
+                            <CircleCheckBig className="mt-0.5 h-4 w-4 shrink-0 text-green-300" />
+                            <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.14em] text-green-200 leading-relaxed">
+                                Shortlisting is complete. Selected teams have been notified.
                             </p>
                         </div>
                     </div>
@@ -69,7 +69,7 @@ export default function AnnouncementPopup() {
                             <Bell className="h-4 w-4 text-[#18B8DA]" />
                         </div>
                         <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-white font-orbitron">
-                            Registration Closed
+                            Shortlisting Complete
                         </h3>
                     </div>
 
@@ -80,48 +80,40 @@ export default function AnnouncementPopup() {
                     <div className="space-y-2.5 text-[13px] leading-relaxed text-white">
                         <p className="font-semibold text-[#18B8DA]/90">
                             Registration phase has ended. {" "}
-                            <span className="text-green-500 font-bold">Shortlisting updates soon</span>.
+                            <span className="text-green-500 font-bold">Shortlisting is done and selected teams have been notified</span>.
                         </p>
 
                         <ul className="space-y-1.5 pl-0">
                             <li className="flex items-start gap-2">
                                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-none bg-[#18B8DA]/50" />
-                                <span>All successfully registered teams will undergo evaluation.</span>
+                                <span>All successfully registered teams have undergone evaluation.</span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-none bg-[#18B8DA]/50" />
                                 <span>
-                                    Only shortlisted external teams will be required to pay the
+                                    Only shortlisted external teams are required to pay the
                                     hackathon registration fee. <br />ONLY EXTERNAL TEAMS
                                 </span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-none bg-[#18B8DA]/50" />
-                                <span>Selected teams will be notified via email.</span>
+                                <span>Selected teams have been notified via email.</span>
                             </li>
                         </ul>
 
                         <p className="mt-1 border-l-2 border-[#18B8DA]/30 pl-3 text-xs italic text-white/70">
-                            Thank you for the overwhelming response. Please wait for the shortlisting results.
+                            College ID cards will be checked at the time of check-in.
                         </p>
 
                         {/* Separate Message Box: Team Verification Clarification */}
                         <div className="mt-3 rounded-none border border-[#18B8DA]/25 bg-[#18B8DA]/8 p-3 sm:p-3.5 text-[11px] sm:text-xs leading-relaxed">
                             <p className="mb-2 font-bold uppercase tracking-[0.14em] text-[#18B8DA] font-orbitron text-[10px] sm:text-[11px]">
-                                Team Verification Note
+                                Check-In Verification Note
                             </p>
                             <ul className="space-y-1.5 text-white/90">
                                 <li className="flex items-start gap-2">
                                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-none bg-[#18B8DA]/60" />
-                                    <span>Inter-college teams are allowed.</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-none bg-[#18B8DA]/60" />
-                                    <span>If any member is from a VIT campus, the submitted registration by that VIT student will be used for verification.</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-none bg-[#18B8DA]/60" />
-                                    <span>Follow this rule strictly to avoid disqualification during verification.</span>
+                                    <span>Please carry your college ID card. It will be checked during check-in.</span>
                                 </li>
                             </ul>
                         </div>

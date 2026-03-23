@@ -1,14 +1,21 @@
+"use client";
+
+import dynamic from "next/dynamic";
+
+// Lazy-load heavy below-fold components to reduce initial JS bundle
+const Tracks = dynamic(() => import("./component/tracks"));
+const TimelinePage = dynamic(() => import("./component/timeline"));
+const FAQSection = dynamic(() => import("./component/faq"));
+const Footer = dynamic(() => import("./component/footer"));
+const OrganisingTeam = dynamic(() => import("./component/organisingTeam"));
+const AnnouncementPopup = dynamic(() => import("./component/announcementPopup"), { ssr: false });
+
+// SSR: false for WebGL/canvas components that cannot render on the server
+const FloatingLines = dynamic(() => import("@/components/FloatingLines"), { ssr: false });
+
 import Navbar from "./component/navbar";
 import LandingContent from "./component/landingContent";
 import AboutUs from "./component/aboutUs";
-import Tracks from "./component/tracks";
-import FAQSection from "./component/faq";
-import Footer from "./component/footer";
-import TimelinePage from "./component/timeline";
-import FloatingLines from "@/components/FloatingLines";
-import AnnouncementPopup from "./component/announcementPopup";
-import OrganisingTeam from "./component/organisingTeam";
-
 
 export default function Page() {
   return (

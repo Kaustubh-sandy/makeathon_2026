@@ -1,7 +1,8 @@
 "use client";
 import TiltedCard from "@/components/TiltedCard";
 import { GraduationCap, Zap, Activity, Database, Cpu } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 type Stat = { label: string; value: string; prefix?: string; animated?: boolean };
 
@@ -23,27 +24,37 @@ const partners = [
 
 function AnimatedCounter({ end, duration = 2000 }: { end: number; duration?: number }) {
     const [count, setCount] = useState(0);
+    const ref = useRef<HTMLSpanElement>(null);
+    const hasAnimated = useRef(false);
 
     useEffect(() => {
-        let startTime: number;
-        let animationFrame: number;
+        const el = ref.current;
+        if (!el) return;
 
-        const animate = (currentTime: number) => {
-            if (!startTime) startTime = currentTime;
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-
-            setCount(Math.floor(progress * end));
-
-            if (progress < 1) {
-                animationFrame = requestAnimationFrame(animate);
-            }
-        };
-
-        animationFrame = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(animationFrame);
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasAnimated.current) {
+                    hasAnimated.current = true;
+                    let startTime: number;
+                    const animate = (currentTime: number) => {
+                        if (!startTime) startTime = currentTime;
+                        const progress = Math.min((currentTime - startTime) / duration, 1);
+                        setCount(Math.floor(progress * end));
+                        if (progress < 1) {
+                            requestAnimationFrame(animate);
+                        }
+                    };
+                    requestAnimationFrame(animate);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.3 }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
     }, [end, duration]);
 
-    return <>{count}</>;
+    return <span ref={ref}>{count}</span>;
 }
 
 export default function AboutUs() {
@@ -59,7 +70,7 @@ export default function AboutUs() {
         // ADDED: Interval to fluctuate the data stream heights
         const streamInterval = setInterval(() => {
             setHeights(Array.from({ length: 8 }, () => Math.floor(Math.random() * 20) + 10));
-        }, 150);
+        }, 500);
 
         return () => {
             clearInterval(interval);
@@ -413,9 +424,11 @@ export default function AboutUs() {
                                         className="p-2 sm:p-3 md:p-4 flex items-center justify-center min-h-[70px] sm:min-h-[80px] md:min-h-[100px]"
                                         style={{ animationDelay: `${idx * 100}ms` }}
                                     >
-                                        <img
+                                        <Image
                                             src={p.logo}
                                             alt={p.name}
+                                            width={224}
+                                            height={128}
                                             className={`${p.width} ${p.height} object-contain opacity-90 hover:opacity-100 transition-opacity`}
                                         />
                                     </div>

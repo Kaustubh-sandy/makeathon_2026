@@ -22,6 +22,7 @@ export default function LandingContent() {
             loop
             muted
             playsInline
+            preload="metadata"
             className="w-full h-full object-cover mask-[linear-gradient(to_bottom,transparent_0%,black_30%,black_70%,transparent_94.5%)] lg:mask-[linear-gradient(to_bottom,transparent_0%,black_20%,black_80%,transparent_100%)]"
           >
             <source src="/assets/eye.mp4" type="video/mp4" />
