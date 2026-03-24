@@ -33,54 +33,80 @@ type DaySchedule = {
 /* ── schedule data ──────────────────────────────────────── */
 const schedule: DaySchedule[] = [
   {
-    label: "SHORTLISTING",
-    date: "Next week",
-    events: [
-      {
-        id: "00",
-        time: "Next week",
-        title: "Shortlisting Round",
-        description:
-          "All registered teams will undergo evaluation. Selected teams will be notified via email.",
-        icon: <ClipboardCheck className="w-7 h-7" />,
-      },
-    ],
-  },
-  {
     label: "DAY 1",
     date: "26 March 2026",
     events: [
       {
         id: "01",
-        time: "08:00 AM",
-        title: "Start of Event | Check-in | Inaugural Ceremony",
+        time: "07:30 AM",
+        title: "Reporting Time",
         description:
-          "Teams arrive and register at Era Sezhiyan Hall every team gets their workspace. Inaugural Ceremony is held.",
-        icon: <ClipboardCheck className="w-7 h-7" />,
+          "Teams arrive and report at Era Sezhiyan Hall, MG Block. Team registration and workspace allocation.",
+        icon: <Clock className="w-7 h-7" />,
       },
       {
         id: "02",
-        time: "10:00 AM",
-        title: "Initial Pitching | Hardware Distribution",
+        time: "08:00 AM",
+        title: "Inauguration Ceremony & Hackathon Commencement",
         description:
-          "Official kick-off with keynote addresses, followed by each team's short introduction and initial pitch. Hardware kits and development resources are distributed.",
-        icon: <Mic className="w-7 h-7" />,
+          "Official opening ceremony and formal commencement of the hackathon. Welcome keynote and event overview.",
+        icon: <Megaphone className="w-7 h-7" />,
       },
       {
         id: "03",
-        time: "12:00 – 03:00 PM",
-        title: "Internal Review | Architecture Feedback",
+        time: "10:00 – 11:00 AM",
+        title: "Snacks - Light Refreshments",
         description:
-          "Mentors rotate across teams for a guidance review. Architecture feedback, feasibility checks, and prototype guidance are provided during this window.",
-        icon: <Cpu className="w-7 h-7" />,
+          "Light refreshments and snacks provided for all teams. Time to network and settle in.",
+        icon: <Package className="w-7 h-7" />,
       },
       {
         id: "04",
-        time: "05:00 PM",
-        title: "Review Round 1 | Scored Feedback",
+        time: "11:00 AM – 12:00 PM",
+        title: "Review 0 - Student Mentors",
         description:
-          "First formal evaluation round. Judges assess progress, technical depth, and innovation potential. Teams receive scored feedback on their prototypes.",
+          "Initial mentoring session with student mentors. Project ideation feedback and guidance.",
+        icon: <Users className="w-7 h-7" />,
+      },
+      {
+        id: "05",
+        time: "12:30 PM – 02:00 PM",
+        title: "Lunch Break",
+        description:
+          "Lunch will be provided for all participants. Recharge and prepare for afternoon sessions.",
         icon: <Package className="w-7 h-7" />,
+      },
+      {
+        id: "06",
+        time: "02:00 PM – 03:00 PM",
+        title: "Review 1 - Faculty Evaluation",
+        description:
+          "First faculty evaluation round. Technical assessment and feedback on project proposals.",
+        icon: <ClipboardCheck className="w-7 h-7" />,
+      },
+      {
+        id: "07",
+        time: "04:30 PM – 05:30 PM",
+        title: "Evening Snacks",
+        description:
+          "Evening refreshments and snacks. Maintain energy levels for continued development.",
+        icon: <Package className="w-7 h-7" />,
+      },
+      {
+        id: "08",
+        time: "08:00 PM – 09:00 PM",
+        title: "Dinner",
+        description:
+          "Dinner provided for all participants. Rest and rejuvenate for the night session.",
+        icon: <Package className="w-7 h-7" />,
+      },
+      {
+        id: "09",
+        time: "10:30 PM – 11:30 PM",
+        title: "Review 0.1 - Student Mentors",
+        description:
+          "Evening mentoring checkpoint with student mentors. Progress review and problem-solving support.",
+        icon: <Users className="w-7 h-7" />,
       },
     ],
   },
@@ -89,35 +115,59 @@ const schedule: DaySchedule[] = [
     date: "27 March 2026",
     events: [
       {
-        id: "05",
-        time: "09:00 AM",
-        title: "Review Round 2",
+        id: "10",
+        time: "01:30 AM – 03:30 AM",
+        title: "Midnight Snacks",
         description:
-          "Second evaluation checkpoint. Teams demonstrate overnight progress, refined prototypes, and updated technical documentation to the panel.",
+          "Late-night snacks provided during the midnight development push. Stay energized.",
+        icon: <Package className="w-7 h-7" />,
+      },
+      {
+        id: "11",
+        time: "07:30 AM – 08:30 AM",
+        title: "Breakfast",
+        description:
+          "Breakfast provided to start the final day. Fuel up for the concluding sessions.",
+        icon: <Package className="w-7 h-7" />,
+      },
+      {
+        id: "12",
+        time: "09:00 AM – 10:00 AM",
+        title: "Review 2 - Faculty Evaluation",
+        description:
+          "Second faculty evaluation round. Assessment of overnight progress and technical implementation.",
         icon: <ClipboardCheck className="w-7 h-7" />,
       },
       {
-        id: "06",
-        time: "02:30 PM",
-        title: "Final Pitching",
+        id: "13",
+        time: "12:30 PM – 02:00 PM",
+        title: "Lunch Break",
         description:
-          "Teams present their completed projects in a final demo session. Each pitch is timed and scored across innovation, execution, and impact.",
-        icon: <Megaphone className="w-7 h-7" />,
+          "Final lunch break before presentations. Last chance to refine your project.",
+        icon: <Package className="w-7 h-7" />,
       },
       {
-        id: "07",
-        time: "04:00 PM",
-        title: "Top 10 Announcement",
+        id: "14",
+        time: "02:30 PM onwards",
+        title: "Review 3 - Faculty Panel / Parallel Evaluations",
         description:
-          "The shortlisted top-10 teams are announced. Selected teams prepare for the grand finale showcase in front of the full judging panel.",
+          "Comprehensive faculty panel evaluation. Parallel evaluation sessions for all teams.",
+        icon: <Cpu className="w-7 h-7" />,
+      },
+      {
+        id: "15",
+        time: "03:45 PM",
+        title: "Announcement of Top 10 Teams",
+        description:
+          "The top 10 shortlisted teams are announced. Selected teams advance to final pitching.",
         icon: <Award className="w-7 h-7" />,
       },
       {
-        id: "08",
-        time: "06:00 PM",
-        title: "Winners Declaration & Prize Distribution",
+        id: "16",
+        time: "04:00 PM onwards",
+        title: "Final Pitching - Top 10 Teams",
         description:
-          "Grand finale — winners across all tracks are revealed. Prizes, certificates, and special recognitions are awarded on stage.",
+          "Grand finale pitch presentations by the top 10 teams in front of the full judging panel. Winners announced and prizes awarded.",
         icon: <Trophy className="w-7 h-7" />,
       },
     ],
@@ -279,8 +329,8 @@ export default function TimelinePage() {
   const GOOGLE_FORM_ENDPOINT =
     "https://script.google.com/macros/s/AKfycbygbUEWrszpJQbFX-cIFcKKCkcSoSXnsyRE06sOEqCDL9Pl1EiSlT6fH39xVRyKOQmbhg/exec";
 
-  const hackathonStart = new Date("2026-03-26T18:00:00");
-  const hackathonEnd = new Date("2026-03-28T06:00:00");
+  const hackathonStart = new Date("2026-03-26T07:30:00");
+  const hackathonEnd = new Date("2026-03-27T18:00:00");
 
   useEffect(() => {
     const fetchRegistrationCount = async () => {

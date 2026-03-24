@@ -61,6 +61,8 @@ export default function AboutUs() {
     const [activeMetric, setActiveMetric] = useState(0);
     // ADDED: State to manage fluctuating heights
     const [heights, setHeights] = useState<number[]>(Array(8).fill(18));
+    const [isGuestFlipped, setIsGuestFlipped] = useState(false);
+    const guestInteractedRef = useRef(false);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -77,6 +79,21 @@ export default function AboutUs() {
             clearInterval(streamInterval);
         };
     }, []);
+
+    useEffect(() => {
+        const autoFlipTimer = setTimeout(() => {
+            if (!guestInteractedRef.current) {
+                setIsGuestFlipped(true);
+            }
+        }, 3500);
+
+        return () => clearTimeout(autoFlipTimer);
+    }, []);
+
+    const handleGuestCardFlip = () => {
+        guestInteractedRef.current = true;
+        setIsGuestFlipped((prev) => !prev);
+    };
 
     return (
         <div className="w-full text-white selection:bg-[#18B8DA] selection:text-[#00121F] bg-transparent">
@@ -463,8 +480,7 @@ export default function AboutUs() {
                             <div className="hidden sm:block flex-1 h-0.75 bg-linear-to-r from-transparent via-[#18B8DA]/30 to-transparent" />
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-2xl mx-auto">
-                            {/* Chief Guest 1 */}
+                        <div className="flex items-center justify-center">
                             <div className="relative group">
                                 <div className="absolute inset-0 bg-[#18B8DA]/5 rounded-sm transition-all duration-300 group-hover:bg-[#18B8DA]/10 opacity-0 group-hover:opacity-100" />
                                 <div className="border border-white/10 bg-[#001018] p-3 sm:p-4 rounded-sm h-full flex flex-col items-center justify-center relative z-10 transition-all duration-300 group-hover:border-[#18B8DA]/30">
@@ -473,50 +489,47 @@ export default function AboutUs() {
                                     <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
                                     <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
 
-                                    
+                                    <div className="relative rounded-sm" style={{ perspective: "1200px" }}>
+                                        <button
+                                            type="button"
+                                            onClick={handleGuestCardFlip}
+                                            className="block cursor-pointer"
+                                            aria-label="Flip chief guest card"
+                                        >
+                                            <div
+                                                className={`relative h-100 w-62.5 transform-3d transition-transform duration-700 ${isGuestFlipped ? "transform-[rotateY(180deg)]" : "transform-[rotateY(0deg)]"}`}
+                                            >
+                                                <div className="absolute inset-0 backface-hidden">
+                                                    <TiltedCard
+                                                        imageSrc="/assets/Lt Cdr Chandresh Mittal.png"
+                                                        altText="Lt Cdr Chandresh Mittal"
+                                                        captionText="Lt Cdr Chandresh Mittal"
+                                                        containerHeight="400px"
+                                                        containerWidth="250px"
+                                                        imageHeight="400px"
+                                                        imageWidth="250px"
+                                                        rotateAmplitude={12}
+                                                        scaleOnHover={1}
+                                                        showMobileWarning={false}
+                                                    />
+                                                </div>
 
-                                    <div className="relative rounded-sm">
-                                        <TiltedCard
-                                            imageSrc="/assets/DR. Pascal Maussion.png"
-                                            altText="Dr. Pascal Maussion"
-                                            captionText="Dr. Pascal Maussion"
-                                            containerHeight="400px"
-                                            containerWidth="250px"
-                                            imageHeight="400px"
-                                            imageWidth="250px"
-                                            rotateAmplitude={12}
-                                            scaleOnHover={1}
-                                            showMobileWarning={false}
-                                        />
+                                                <div className="absolute inset-0 rounded-sm border border-[#18B8DA]/25 bg-[#001018] p-4 text-left backface-hidden transform-[rotateY(180deg)]">
+                                                    <div className="h-full flex flex-col">
+                                                        
+                                                        <h2 className="text-white font-bold text-sm leading-snug mb-3">
+                                                            Lt Cdr Chandresh Mittal (Retd)
+                                                        </h2>
+                                                        <p className="text-white/80 text-s leading-relaxed">
+                                                            is a distinguished Indian Navy veteran and Vice President at JPMorgan Chase, specializing in Product Risk and AI Governance. An alumnus of VIT and IIM Ahmedabad, he combines over 14 years of leadership in military operations and high-frequency fintech transformation to drive global innovation in emerging technologies.
+                                                        </p>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
                                     </div>
-                                </div>
-                            </div>
-
-                            {/* Chief Guest 2 */}
-                            <div className="relative group">
-                                <div className="absolute inset-0 bg-[#18B8DA]/5 rounded-sm transition-all duration-300 group-hover:bg-[#18B8DA]/10 opacity-0 group-hover:opacity-100" />
-                                <div className="border border-white/10 bg-[#001018] p-3 sm:p-4 rounded-sm h-full flex flex-col items-center justify-center relative z-10 transition-all duration-300 group-hover:border-[#18B8DA]/30">
-                                    <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
-                                    <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
-                                    <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
-                                    <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#18B8DA]/40 group-hover:border-[#18B8DA] transition-colors" />
-
-                                    
-
-                                    <div className="relative rounded-sm">
-                                        <TiltedCard
-                                            imageSrc="/assets/Lt Cdr Chandresh Mittal.png"
-                                            altText="Lt Cdr Chandresh Mittal"
-                                            captionText="Lt Cdr Chandresh Mittal"
-                                            containerHeight="400px"
-                                            containerWidth="250px"
-                                            imageHeight="400px"
-                                            imageWidth="250px"
-                                            rotateAmplitude={12}
-                                            scaleOnHover={1}
-                                            showMobileWarning={false}
-                                        />
-                                    </div>
+                        
                                 </div>
                             </div>
                         </div>

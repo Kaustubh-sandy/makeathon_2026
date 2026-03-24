@@ -282,6 +282,7 @@ export default function OrganisingTeam() {
 							title: "",
 							description: "",
 						}))}
+						flipImages={organisingTeamMembers.map((member) => member.flipImageSrc || "")}
 						scale={1.5}
 					/>
 				</div>

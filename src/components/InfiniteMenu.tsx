@@ -513,6 +513,7 @@ type UpdateCallback = (deltaTime: number) => void;
 class ArcballControl {
   private canvas: HTMLCanvasElement;
   private updateCallback: UpdateCallback;
+  private onTapCallback: (() => void) | null = null;
 
   public isPointerDown = false;
   public orientation = quat.create();
@@ -531,16 +532,34 @@ class ArcballControl {
   private readonly EPSILON = 0.1;
   private readonly IDENTITY_QUAT = quat.create();
 
-  constructor(canvas: HTMLCanvasElement, updateCallback?: UpdateCallback) {
+  // Tap detection
+  private pointerDownTime = 0;
+  private pointerDownPos = vec2.create();
+  private readonly TAP_TIME_THRESHOLD = 300; // ms
+  private readonly TAP_DISTANCE_THRESHOLD = 10; // px
+
+  constructor(canvas: HTMLCanvasElement, updateCallback?: UpdateCallback, onTapCallback?: () => void) {
     this.canvas = canvas;
     this.updateCallback = updateCallback || (() => undefined);
+    this.onTapCallback = onTapCallback || null;
 
     canvas.addEventListener('pointerdown', (e: PointerEvent) => {
       vec2.set(this.pointerPos, e.clientX, e.clientY);
       vec2.copy(this.previousPointerPos, this.pointerPos);
+      vec2.set(this.pointerDownPos, e.clientX, e.clientY);
+      this.pointerDownTime = performance.now();
       this.isPointerDown = true;
     });
-    canvas.addEventListener('pointerup', () => {
+    canvas.addEventListener('pointerup', (e: PointerEvent) => {
+      const elapsed = performance.now() - this.pointerDownTime;
+      const dx = e.clientX - this.pointerDownPos[0];
+      const dy = e.clientY - this.pointerDownPos[1];
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (elapsed < this.TAP_TIME_THRESHOLD && distance < this.TAP_DISTANCE_THRESHOLD) {
+        this.onTapCallback?.();
+      }
+
       this.isPointerDown = false;
     });
     canvas.addEventListener('pointerleave', () => {
@@ -660,6 +679,7 @@ interface MenuItem {
 
 type ActiveItemCallback = (index: number) => void;
 type MovementChangeCallback = (isMoving: boolean) => void;
+type TapCallback = (index: number) => void;
 type InitCallback = (instance: InfiniteGridMenu) => void;
 
 interface Camera {
@@ -750,16 +770,29 @@ class InfiniteGridMenu {
   public smoothRotationVelocity = 0;
   public scaleFactor = 1.0;
 
+  // Flip state
+  private flipImages: string[] = [];
+  private flippedState: boolean[] = [];
+  private onTapCallback: TapCallback | null = null;
+  private loadedFlipImages: (HTMLImageElement | null)[] = [];
+
   constructor(
     private canvas: HTMLCanvasElement,
     private items: MenuItem[],
     private onActiveItemChange: ActiveItemCallback,
     private onMovementChange: MovementChangeCallback,
     onInit?: InitCallback,
-    scale: number = 1.0
+    scale: number = 1.0,
+    flipImages: string[] = [],
+    onTap?: TapCallback
   ) {
     this.scaleFactor = scale;
     this.camera.position[2] = 3 * scale;
+    this.flipImages = flipImages;
+    this.flippedState = new Array(items.length).fill(false);
+    this.onTapCallback = onTap || null;
+    this.loadedFlipImages = new Array(items.length).fill(null);
+    this.preloadFlipImages();
     this.init(onInit);
   }
 
@@ -838,7 +871,11 @@ class InfiniteGridMenu {
     this.DISC_INSTANCE_COUNT = this.icoGeo.vertices.length;
     this.initDiscInstances(this.DISC_INSTANCE_COUNT);
     this.initTexture();
-    this.control = new ArcballControl(this.canvas, deltaTime => this.onControlUpdate(deltaTime));
+    this.control = new ArcballControl(
+      this.canvas,
+      deltaTime => this.onControlUpdate(deltaTime),
+      () => this.handleTap()
+    );
 
     this.updateCameraMatrix();
     this.updateProjectionMatrix();
@@ -884,6 +921,72 @@ class InfiniteGridMenu {
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, canvas);
       gl.generateMipmap(gl.TEXTURE_2D);
     });
+  }
+
+  private preloadFlipImages(): void {
+    this.flipImages.forEach((src, i) => {
+      if (!src) return;
+      const img = new window.Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        this.loadedFlipImages[i] = img;
+      };
+      img.src = src;
+    });
+  }
+
+  private handleTap(): void {
+    const nearestVertexIndex = this.findNearestVertexIndex();
+    const itemIndex = nearestVertexIndex % Math.max(1, this.items.length);
+
+    if (!this.flipImages[itemIndex]) return;
+
+    this.flippedState[itemIndex] = !this.flippedState[itemIndex];
+    this.onTapCallback?.(itemIndex);
+    this.updateTextureForItem(itemIndex);
+  }
+
+  private updateTextureForItem(itemIndex: number): void {
+    if (!this.gl || !this.tex) return;
+    const gl = this.gl;
+
+    const isFlipped = this.flippedState[itemIndex];
+    const cellSize = 512;
+    const x = (itemIndex % this.atlasSize) * cellSize;
+    const y = Math.floor(itemIndex / this.atlasSize) * cellSize;
+
+    const drawImage = (img: HTMLImageElement) => {
+      const tempCanvas = document.createElement('canvas');
+      tempCanvas.width = cellSize;
+      tempCanvas.height = cellSize;
+      const ctx = tempCanvas.getContext('2d')!;
+      ctx.drawImage(img, 0, 0, cellSize, cellSize);
+
+      gl.bindTexture(gl.TEXTURE_2D, this.tex);
+      gl.texSubImage2D(gl.TEXTURE_2D, 0, x, y, gl.RGBA, gl.UNSIGNED_BYTE, tempCanvas);
+    };
+
+    if (isFlipped) {
+      const flipImg = this.loadedFlipImages[itemIndex];
+      if (flipImg) {
+        drawImage(flipImg);
+      } else {
+        // Load on demand if not preloaded yet
+        const img = new window.Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => {
+          this.loadedFlipImages[itemIndex] = img;
+          drawImage(img);
+        };
+        img.src = this.flipImages[itemIndex];
+      }
+    } else {
+      // Flip back to original
+      const img = new window.Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => drawImage(img);
+      img.src = this.items[itemIndex].image;
+    }
   }
 
   private initDiscInstances(count: number): void {
@@ -1087,9 +1190,11 @@ const defaultItems: MenuItem[] = [
 interface InfiniteMenuProps {
   items?: MenuItem[];
   scale?: number;
+  flipImages?: string[];
+  onCardTap?: (index: number) => void;
 }
 
-const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0 }) => {
+const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0, flipImages = [], onCardTap }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null) as MutableRefObject<HTMLCanvasElement | null>;
   const [activeItem, setActiveItem] = useState<MenuItem | null>(null);
   const [isMoving, setIsMoving] = useState<boolean>(false);
@@ -1111,7 +1216,9 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0 }) => {
         handleActiveItem,
         setIsMoving,
         sk => sk.run(),
-        scale
+        scale,
+        flipImages,
+        onCardTap
       );
     }
 
@@ -1127,16 +1234,7 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0 }) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [items, scale]);
-
-  const handleButtonClick = () => {
-    if (!activeItem?.link) return;
-    if (activeItem.link.startsWith('http')) {
-      window.open(activeItem.link, '_blank');
-    } else {
-      console.log('Internal route:', activeItem.link);
-    }
-  };
+  }, [items, scale, flipImages, onCardTap]);
 
   return (
     <div className="relative w-full h-full">
@@ -1190,33 +1288,6 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0 }) => {
           >
             {activeItem.description}
           </p>
-
-          <div
-            onClick={handleButtonClick}
-            className={`
-          absolute
-          left-1/2
-          z-10
-          w-[60px]
-          h-[60px]
-          grid
-          place-items-center
-          bg-[#00ffff]
-          border-[5px]
-          border-black
-          rounded-full
-          cursor-pointer
-          transition-all
-          ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-          ${
-            isMoving
-              ? 'bottom-[-80px] opacity-0 pointer-events-none duration-[100ms] scale-0 -translate-x-1/2'
-              : 'bottom-[3.8em] opacity-100 pointer-events-auto duration-[500ms] scale-100 -translate-x-1/2'
-          }
-        `}
-          >
-            <p className="select-none relative text-[#060010] top-[2px] text-[26px]">&#x2197;</p>
-          </div>
         </>
       )}
     </div>
