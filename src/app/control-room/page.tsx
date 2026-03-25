@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { onValue, ref, set, update, push, remove } from "firebase/database";
 import { db } from "@/lib/firebase";
 
 const ADMIN_KEY = "makeathon26";
 
-export default function ControlRoomPage() {
+function ControlRoomContent() {
   const searchParams = useSearchParams();
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -403,5 +403,13 @@ export default function ControlRoomPage() {
 
       </div>
     </main>
+  );
+}
+
+export default function ControlRoomPage() {
+  return (
+    <Suspense fallback={<main className="min-h-screen bg-[#00121F]" />}>
+      <ControlRoomContent />
+    </Suspense>
   );
 }
