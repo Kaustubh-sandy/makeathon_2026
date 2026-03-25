@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
 
 // Lazy-load heavy below-fold components to reduce initial JS bundle
 const Tracks = dynamic(() => import("./component/tracks"));
@@ -16,8 +17,23 @@ const FloatingLines = dynamic(() => import("@/components/FloatingLines"), { ssr:
 import Navbar from "./component/navbar";
 import LandingContent from "./component/landingContent";
 import AboutUs from "./component/aboutUs";
+import LiveDashboard from "./component/liveDashboard";
 
 export default function Page() {
+  useEffect(() => {
+    // If user explicitly navigated to a specific hash (like #live-dashboard), let it be
+    if (window.location.hash && window.location.hash !== "#hero-pin") return;
+
+    const heroSection = document.getElementById("hero-pin");
+    if (!heroSection) return;
+
+    // Instantly snap to the hero section on load so dashboard is hidden above
+    window.scrollTo({
+      top: heroSection.offsetTop,
+      behavior: "instant"
+    });
+  }, []);
+
   return (
     // bg-[#00121F] matches your 'Rich Black' palette exactly
     <main className="relative min-h-screen w-full overflow-hidden bg-[#00121F] text-white selection:bg-[#18B8DA] selection:text-[#00121F]">
@@ -41,6 +57,8 @@ export default function Page() {
       {/* CONTENT LAYER (interactive) */}
       <div className="relative z-10">
         <Navbar />
+
+        <LiveDashboard />
 
         <LandingContent />
 

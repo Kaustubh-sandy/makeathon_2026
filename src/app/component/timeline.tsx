@@ -5,7 +5,6 @@ import {
   Users,
   Clock,
   Cpu,
-  Mic,
   Package,
   ClipboardCheck,
   Award,
@@ -57,7 +56,7 @@ const schedule: DaySchedule[] = [
         time: "10:00 – 11:00 AM",
         title: "Snacks - Light Refreshments",
         description:
-          "Light refreshments and snacks provided for all teams. Time to network and settle in.",
+          "Short break window for teams to regroup, network, and settle in for the next review cycle.",
         icon: <Package className="w-7 h-7" />,
       },
       {
@@ -73,7 +72,7 @@ const schedule: DaySchedule[] = [
         time: "12:30 PM – 02:00 PM",
         title: "Lunch Break",
         description:
-          "Lunch will be provided for all participants. Recharge and prepare for afternoon sessions.",
+          "Midday break to recharge and prepare for afternoon sessions.",
         icon: <Package className="w-7 h-7" />,
       },
       {
@@ -89,7 +88,7 @@ const schedule: DaySchedule[] = [
         time: "04:30 PM – 05:30 PM",
         title: "Evening Snacks",
         description:
-          "Evening refreshments and snacks. Maintain energy levels for continued development.",
+          "Evening break window before continuing with the next development sprint.",
         icon: <Package className="w-7 h-7" />,
       },
       {
@@ -97,7 +96,7 @@ const schedule: DaySchedule[] = [
         time: "08:00 PM – 09:00 PM",
         title: "Dinner",
         description:
-          "Dinner provided for all participants. Rest and rejuvenate for the night session.",
+          "Night break before teams continue into the late-evening build session.",
         icon: <Package className="w-7 h-7" />,
       },
       {
@@ -119,7 +118,7 @@ const schedule: DaySchedule[] = [
         time: "01:30 AM – 03:30 AM",
         title: "Midnight Snacks",
         description:
-          "Late-night snacks provided during the midnight development push. Stay energized.",
+          "Late-night break slot during the midnight development push.",
         icon: <Package className="w-7 h-7" />,
       },
       {
@@ -127,7 +126,7 @@ const schedule: DaySchedule[] = [
         time: "07:30 AM – 08:30 AM",
         title: "Breakfast",
         description:
-          "Breakfast provided to start the final day. Fuel up for the concluding sessions.",
+          "Morning break to reset before final-day evaluations.",
         icon: <Package className="w-7 h-7" />,
       },
       {
@@ -143,7 +142,7 @@ const schedule: DaySchedule[] = [
         time: "12:30 PM – 02:00 PM",
         title: "Lunch Break",
         description:
-          "Final lunch break before presentations. Last chance to refine your project.",
+          "Final midday break before presentations. Last chance to refine your project.",
         icon: <Package className="w-7 h-7" />,
       },
       {
@@ -173,6 +172,9 @@ const schedule: DaySchedule[] = [
     ],
   },
 ];
+
+const HACKATHON_START = new Date("2026-03-26T07:30:00");
+const HACKATHON_END = new Date("2026-03-27T18:00:00");
 
 /* ── fade-in hook ───────────────────────────────────────── */
 function useFadeIn() {
@@ -318,7 +320,6 @@ export default function TimelinePage() {
     }
     return null;
   });
-  const [systemVoltage, setSystemVoltage] = useState(0);
   const [countdown, setCountdown] = useState({
     days: 0,
     hours: 0,
@@ -328,9 +329,6 @@ export default function TimelinePage() {
 
   const GOOGLE_FORM_ENDPOINT =
     "https://script.google.com/macros/s/AKfycbygbUEWrszpJQbFX-cIFcKKCkcSoSXnsyRE06sOEqCDL9Pl1EiSlT6fH39xVRyKOQmbhg/exec";
-
-  const hackathonStart = new Date("2026-03-26T07:30:00");
-  const hackathonEnd = new Date("2026-03-27T18:00:00");
 
   useEffect(() => {
     const fetchRegistrationCount = async () => {
@@ -359,7 +357,7 @@ export default function TimelinePage() {
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-      const difference = +hackathonStart - +now;
+      const difference = +HACKATHON_START - +now;
 
       if (difference > 0) {
         setCountdown({
@@ -368,13 +366,8 @@ export default function TimelinePage() {
           minutes: Math.floor((difference / 1000 / 60) % 60),
           seconds: Math.floor((difference / 1000) % 60),
         });
-        setSystemVoltage(0);
       } else {
-        const elapsedMs = +now - +hackathonStart;
-        const elapsedHours = elapsedMs / (1000 * 60 * 60);
-        setSystemVoltage(Math.min(36, Math.max(0, elapsedHours)));
-
-        const remaining = +hackathonEnd - +now;
+        const remaining = +HACKATHON_END - +now;
         if (remaining > 0) {
           setCountdown({
             days: 0,
@@ -384,7 +377,6 @@ export default function TimelinePage() {
           });
         } else {
           setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-          setSystemVoltage(36);
         }
       }
     }, 1000);
@@ -534,9 +526,9 @@ export default function TimelinePage() {
             {/* Vertical timeline */}
             <div className="relative mt-10">
               {/* Vertical spine — desktop (left side) */}
-              <div className="hidden md:block absolute left-[39px] top-0 bottom-0 w-px bg-white/10" />
+              <div className="hidden md:block absolute left-9.75 top-0 bottom-0 w-px bg-white/10" />
               {/* Vertical spine — mobile (left edge) */}
-              <div className="md:hidden absolute left-[31px] top-0 bottom-0 w-px bg-white/10" />
+              <div className="md:hidden absolute left-7.75 top-0 bottom-0 w-px bg-white/10" />
 
               <div className="flex flex-col gap-14 md:gap-16">
                 {day.events.map((event, idx) => (
@@ -551,13 +543,13 @@ export default function TimelinePage() {
           </div>
         ))}
 
-        {/* ── Food & Hospitality Note ───────────────── */}
+        {/* ── General Event Note ─────────────────────── */}
         <div className="mt-14 flex items-start gap-4 px-5 py-4 border border-[#18B8DA]/20 bg-[#001018] rounded-sm">
           <Zap className="w-5 h-5 text-[#18B8DA] shrink-0 mt-0.5" />
           <p className="text-white/65 text-sm md:text-base leading-relaxed">
             <span className="text-[#18B8DA] font-bold uppercase tracking-wider text-xs">Note</span>
             <span className="text-white/25 mx-2">|</span>
-            Food and refreshments will be provided at the venue throughout the duration of the hackathon. Stay fuelled, stay focused.
+            Teams should follow the published review windows and remain available at the venue during scheduled checkpoints.
           </p>
         </div>
       </div>
@@ -586,7 +578,7 @@ function DayHeading({ label, date }: { label: string; date: string }) {
           {date}
         </span>
       </div>
-      <div className="hidden sm:block flex-1 h-px bg-gradient-to-r from-[#18B8DA]/30 to-transparent" />
+      <div className="hidden sm:block flex-1 h-px bg-linear-to-r from-[#18B8DA]/30 to-transparent" />
     </div>
   );
 }

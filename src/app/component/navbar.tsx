@@ -25,7 +25,8 @@ export default function Navbar() {
 
   const items = useMemo<NavItem[]>(
     () => [
-      { label: "Home", href: "#" },
+      { label: "Status", href: "#live-dashboard" },
+      { label: "Home", href: "#hero-pin" },
       { label: "About US", href: "#about" },
       { label: "Guests", href: "#guests" },
       { label: "Tracks", href: "#tracks" },

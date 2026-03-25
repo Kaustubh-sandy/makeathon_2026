@@ -163,9 +163,15 @@ export default function Footer() {
                                     <div className="w-1 h-1 rounded-full bg-[#18B8DA]/60 animate-pulse delay-150" />
                                     <div className="w-1 h-1 rounded-full bg-[#18B8DA]/30 animate-pulse delay-300" />
                                 </div>
-                                <span className="text-[9px] font-mono text-white/50 uppercase tracking-[0.3em]">
+                                <a 
+                                    href="/control-room"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="cursor-target text-[9px] font-mono text-white/50 uppercase tracking-[0.3em] hover:text-[#18B8DA] transition-colors"
+                                    title="Access System Core"
+                                >
                                     SLCT-2026-MKTHN
-                                </span>
+                                </a>
                             </div>
                         </div>
                     </div>

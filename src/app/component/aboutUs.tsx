@@ -62,7 +62,6 @@ export default function AboutUs() {
     // ADDED: State to manage fluctuating heights
     const [heights, setHeights] = useState<number[]>(Array(8).fill(18));
     const [isGuestFlipped, setIsGuestFlipped] = useState(false);
-    const guestInteractedRef = useRef(false);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -80,18 +79,7 @@ export default function AboutUs() {
         };
     }, []);
 
-    useEffect(() => {
-        const autoFlipTimer = setTimeout(() => {
-            if (!guestInteractedRef.current) {
-                setIsGuestFlipped(true);
-            }
-        }, 3500);
-
-        return () => clearTimeout(autoFlipTimer);
-    }, []);
-
     const handleGuestCardFlip = () => {
-        guestInteractedRef.current = true;
         setIsGuestFlipped((prev) => !prev);
     };
 
